@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  @font-face {
+    font-family: morabba;
+    src: url("https://cdn.mxit.ir/fonts/Morabba/Morabba-Regular.eot");
+    src: url("https://cdn.mxit.ir/fonts/Morabba/Morabba-Regular.eot")
+        format("embedded-opentype"),
+      url("https://cdn.mxit.ir/fonts/Morabba/Morabba-Regular.woff2")
+        format("woff2"),
+      url("https://cdn.mxit.ir/fonts/Morabba/Morabba-Regular.woff")
+        format("woff"),
+      url("https://cdn.mxit.ir/fonts/Morabba/Morabba-Regular.ttf")
+        format("truetype ");
+  }
+}
