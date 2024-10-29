@@ -74,19 +74,57 @@
     <div
       class="w-full flex flex-col flex-wrap md:flex-nowrap md:flex-row items-center justify-center gap-12 mt-10 p-14"
     >
-      <!-- <div
-        class="md:w-1/3 md:h-[400px] w-[90%] border border-dashed border-gray-400 flex items-center justify-center flex-col p-4 rounded-lg"
-        v-for="i in 4"
-        :key="i"
-      >
-        <img src="../assets/images/bag-logo.png" alt="bag-logo" class="mb-4" />
-        <h3 class="mb-4 text-xl font-bold">ایجاد سبد خرید اختصاصی</h3>
-        <p class="text-gray-400 text-center text-lg">
-          با ایجاد سبد خرید اختصاصی بدون نیاز به کاربران سبد خریدهای آن هارا
-          خودتان بسازیذ و برای هرکدام لینک اختصاصی دریافت کنید
-        </p>
-      </div> -->
       <serviceCard v-for="card in serviceCards" :key="card" :card-info="card" />
+    </div>
+
+    <!-- Signup-now section -->
+    <div
+      class="w-full signup-section h-[250px] mt-10 flex item-scenter justify-center"
+    >
+      <img
+        src="../assets/images/signup.jpg"
+        alt="signup"
+        class="object-cover w-full max-h-[250px] saturate-50"
+      />
+      <div
+        class="absolute bg-black w-full max-h-[250px] h-[250px] opacity-55"
+      ></div>
+      <div class="absolute mt-10">
+        <h2 class="text-white text-center text-3xl md:text-4xl">
+          همین حالا ثبت نام کنید !
+        </h2>
+        <p class="text-white text-center text-base md:text-lg mt-4">
+          ثبت نام در کارت ساز رایگان است. همین الان ثبت نام کنید وکارت ساز را
+          تست کنید
+        </p>
+        <div class="flex items-center justify-center mt-6">
+          <button
+            class="rounded-full w-52 flex justify-center gap-4 py-4 bg-orange-500 text-center px-4 transition-colors duration-300 hover:bg-orange-600"
+          >
+            <Icon
+              icon="mynaui:edit-one-solid"
+              width="23"
+              height="23"
+              style="color: white"
+            />
+            <span class="text-white">ثبت نام رایگان</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- About_CartSaz -->
+    <div class="w-full mt-10 p-10">
+      <h2 class="text-4xl">
+        <span class="text-blue-400">کارت ساز</span> چیست ؟‌
+      </h2>
+      <p class="text-xl text-gray-700 mt-6">
+        کارت ساز یک سیستم نوین است که به شما اجازه میدهد برای مشتریان خود سبد
+        خرید اختصاصی ایجاد کنید و بعدا با ارسال لینک از آنها بخواهید که سبد خرید
+        خود را کامل کنند در این حالت شما دیگرنیازی به یادداشت موارد خواسته شده
+        ندارید و به راحتی میتوانید سفارشات خود را ثبت کنید کارت ساز آمده است تا
+        زمان شما مدیریت شود مشتریان خود را رهگیری کنید سفارشات را طبقه بندی کنید
+        کارت ساز نهایت تلاش را برای خدمت رسانی بهشما انجام خواهد داد
+      </p>
     </div>
   </div>
 </template>
