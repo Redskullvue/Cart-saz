@@ -4,8 +4,8 @@
       <img src="../assets/images/logo.svg" alt="logo" />
     </div>
 
-    <div class="w-1/3 flex text-lg justify-center">
-      <div class="hidden md:flex items-center justify-center gap-8">
+    <div class="w-2/3 flex text-lg justify-center">
+      <div class="hidden md:flex items-center justify-end gap-8 w-full">
         <router-link to="/">آبدیت ها</router-link>
         <router-link to="/">سوالات متداول</router-link>
         <router-link to="/">تماس با ما</router-link>
