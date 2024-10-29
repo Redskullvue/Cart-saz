@@ -8,7 +8,7 @@
       <div class="hidden md:flex items-center justify-end gap-8 w-full">
         <router-link to="/">آبدیت ها</router-link>
         <router-link to="/">سوالات متداول</router-link>
-        <router-link to="/">تماس با ما</router-link>
+        <router-link to="/تماس-با-ما">تماس با ما</router-link>
       </div>
       <router-link
         to="/"

@@ -37,7 +37,7 @@
   </div>
   <!-- Spliter -->
   <div class="w-full flex items-center justify-center h-2">
-    <div class="w-2/3 bg-gray-50 h-full"></div>
+    <div class="w-2/3 bg-gray-100 h-full"></div>
   </div>
 
   <div class="w-full flex flex-col items-center justify-center mt-10">
@@ -125,6 +125,9 @@
         زمان شما مدیریت شود مشتریان خود را رهگیری کنید سفارشات را طبقه بندی کنید
         کارت ساز نهایت تلاش را برای خدمت رسانی بهشما انجام خواهد داد
       </p>
+    </div>
+    <div class="w-full flex items-center justify-center h-2">
+      <div class="w-2/3 bg-gray-100 h-full"></div>
     </div>
   </div>
 </template>
