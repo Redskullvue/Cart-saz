@@ -1,14 +1,14 @@
 <template>
   <div class="w-full p-6 md:p-10 flex items-center justify-between">
-    <div class="flex items-center">
+    <router-link to="/" class="flex items-center">
       <img src="../assets/images/logo.svg" alt="logo" />
-    </div>
+    </router-link>
 
     <div class="w-2/3 flex text-lg justify-center">
       <div class="hidden md:flex items-center justify-end gap-8 w-full">
         <router-link to="/">آبدیت ها</router-link>
-        <router-link to="/">سوالات متداول</router-link>
-        <router-link to="/">تماس با ما</router-link>
+        <router-link to="/faq">سوالات متداول</router-link>
+        <router-link to="/تماس-با-ما">تماس با ما</router-link>
       </div>
       <router-link
         to="/"
