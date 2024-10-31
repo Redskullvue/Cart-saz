@@ -7,7 +7,7 @@
       <span class="text-gray-600 hidden md:inline">کارت ساز - ۱۴۰۳</span>
     </div>
     <div class="md:hidden flex items-center justify-center gap-5 mt-5 mb-5">
-      <router-link to="/">آبدیت ها</router-link>
+      <router-link to="/">وبلاگ</router-link>
       <router-link to="/faq">سوالات متداول</router-link>
       <router-link to="/تماس-با-ما">تماس با ما</router-link>
     </div>
