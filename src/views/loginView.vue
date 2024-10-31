@@ -5,7 +5,9 @@
       <img src="../assets/images/logo2.png" alt="logo" class="mb-6" />
       <h4 class="text-lg font-medium text-center">ورود / ثبت نام فروشگاه</h4>
     </div>
-    <div class="mt-10 flex items-center justify-center flex-col w-1/4">
+    <div
+      class="mt-10 flex items-center justify-center flex-col w-full md:w-1/4"
+    >
       <h2 class="mb-4">جهت ورود به حساب ابتدا شماره تماس خود را وارد کنید</h2>
       <div class="flex border border-gray-500 w-[90%] p-2 rounded-lg">
         <input type="tel" class="w-full py-2 focus:outline-none" />
