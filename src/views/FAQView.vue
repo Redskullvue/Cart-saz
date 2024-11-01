@@ -50,3 +50,9 @@ const openBox = (boxPos) => {
   questions.value[boxPos].isOpen = !questions.value[boxPos].isOpen;
 };
 </script>
+
+<style scoped>
+::-webkit-scrollbar {
+  width: 1px;
+}
+</style>
