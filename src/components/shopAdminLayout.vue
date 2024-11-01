@@ -5,7 +5,7 @@
     <div>خانه</div>
     <div class="w-full md:w-max flex md:mt-0 mt-4 justify-around">
       <button
-        class="rounded-lg bg-blue-500 text-white py-3 mx-2 my-1 w-24 text-sm md:w-32"
+        class="rounded-lg bg-blue-500 text-white py-3 mx-2 w-24 text-sm md:w-32"
       >
         افزودن سبد خرید
       </button>
