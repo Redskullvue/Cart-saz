@@ -17,6 +17,27 @@
           />
           آخرین سبدهای خرید
         </h2>
+        <div class="mt-4">
+          <cart-card
+            v-for="(cart, index) in carts"
+            :key="index"
+            :index="index + 1"
+            :info="cart"
+          />
+        </div>
+        <div class="w-full flex items-center justify-center mt-10">
+          <button
+            class="rounded-full w-56 py-3 bg-gray-100 flex justify-center gap-2"
+          >
+            مشاهده همه
+            <Icon
+              icon="mingcute:arrow-left-line"
+              width="23"
+              height="23"
+              style="color: black"
+            />
+          </button>
+        </div>
       </div>
       <div class="w-full md:w-1/2 p-5">
         <h2 class="flex items-center gap-2 text-3xl mb-6">
@@ -29,7 +50,7 @@
           آخرین محصولات
         </h2>
         <div
-          class="border border-gray-400 w-full py-4 px-3 my-4 rounded-lg flex justify-between items-center"
+          class="border border-gray-400 w-full py-6 px-3 my-4 rounded-lg flex justify-between items-center"
           v-for="i in 4"
           :key="i"
         >
@@ -56,4 +77,34 @@
 
 <script setup>
 import { Icon } from "@iconify/vue";
+import cartCard from "@/components/cartCard.vue";
+import { ref } from "vue";
+
+const dateCreator = () => {
+  return new Date().toLocaleDateString("fa-IR");
+};
+
+const carts = ref([
+  {
+    productNumber: 4,
+    sumProducts: 400000,
+    date: dateCreator(),
+  },
+  {
+    productNumber: 2,
+    sumProducts: 200000,
+    date: dateCreator(),
+  },
+  {
+    productNumber: 1,
+    sumProducts: 500000,
+    date: dateCreator(),
+  },
+]);
 </script>
+
+<style scoped>
+::-webkit-scrollbar {
+  width: 1px;
+}
+</style>
