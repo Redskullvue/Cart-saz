@@ -3,7 +3,7 @@
     class="w-full rounded-lg border border-gray-500 h-[250px] p-6 flex flex-col items-center justify-center gap-7"
   >
     <router-link
-      to="/"
+      to="/dashboard/main"
       class="w-full flex gap-2"
       :class="route.path === '/dashboard/main' ? 'text-blue-500 ' : ''"
     >
@@ -11,7 +11,7 @@
       خانه
     </router-link>
     <router-link
-      to="/"
+      to="/dashboard/main"
       class="w-full flex gap-2"
       :class="route.path === '/dashboard/carts' ? 'text-blue-500 ' : ''"
     >
@@ -19,7 +19,7 @@
       سبدهای خرید
     </router-link>
     <router-link
-      to="/"
+      to="/dashboard/products"
       class="w-full flex gap-2"
       :class="route.path === '/dashboard/products' ? 'text-blue-500 ' : ''"
     >

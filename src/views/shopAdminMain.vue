@@ -17,7 +17,7 @@
           />
           آخرین سبدهای خرید
         </h2>
-        <div class="mt-4">
+        <div class="mt-4" v-if="carts.length > 0">
           <cart-card
             v-for="(cart, index) in carts"
             :key="index"
@@ -25,9 +25,13 @@
             :info="cart"
           />
         </div>
+        <p v-else class="w-full text-center mt-10">
+          هیچ آیتمی برای نمایش وجود ندارد
+        </p>
         <div class="w-full flex items-center justify-center mt-10">
           <button
             class="rounded-full w-56 py-3 bg-gray-100 flex justify-center gap-2"
+            v-if="carts.length > 0"
           >
             مشاهده همه
             <Icon
@@ -39,6 +43,7 @@
           </button>
         </div>
       </div>
+
       <div class="w-full md:w-1/2 p-5">
         <h2 class="flex items-center gap-2 text-3xl mb-6">
           <Icon
