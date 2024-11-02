@@ -3,7 +3,7 @@
     class="w-full h-16 border-t border-gray-500 bg-gray-50 flex items-center"
   >
     <router-link
-      to="/"
+      to="/dashboard/main"
       class="w-full flex items-center flex-col justify-center"
       :class="route.path === '/dashboard/main' ? 'text-blue-500 ' : ''"
     >
@@ -11,7 +11,7 @@
       خانه
     </router-link>
     <router-link
-      to="/"
+      to="/dashboard/main"
       class="w-full flex items-center flex-col justify-center"
       :class="route.path === '/dashboard/carts' ? 'text-blue-500 ' : ''"
     >
@@ -19,7 +19,7 @@
       سبدهای خرید
     </router-link>
     <router-link
-      to="/"
+      to="/dashboard/products"
       class="w-full flex items-center flex-col justify-center"
       :class="route.path === '/dashboard/products' ? 'text-blue-500 ' : ''"
     >
