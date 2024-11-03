@@ -27,7 +27,7 @@
       محصولات
     </router-link>
     <router-link
-      to="/"
+      to="/dashboard/profile"
       class="w-full flex gap-2"
       :class="route.path === '/dashboard/profile' ? 'text-blue-500 ' : ''"
     >
