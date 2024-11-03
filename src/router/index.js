@@ -8,6 +8,7 @@ import notFoundView from "@/views/notFoundView.vue";
 import ShopAdminLayout from "@/components/shopAdminLayout.vue";
 import shopAdminMain from "@/views/shopAdminMain.vue";
 import ShopAdminProducts from "@/views/shopAdminProducts.vue";
+import shopAdminProfile from "@/views/shopAdminProfile.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -55,6 +56,11 @@ const router = createRouter({
           path: "/dashboard/products",
           name: "adminProducts",
           component: ShopAdminProducts,
+        },
+        {
+          path: "/dashboard/profile",
+          name: "adminProfile",
+          component: shopAdminProfile,
         },
       ],
     },

@@ -28,7 +28,7 @@
     </router-link>
 
     <router-link
-      to="/"
+      to="/dashboard/profile"
       class="w-full flex items-center flex-col justify-center"
       :class="route.path === '/dashboard/profile' ? 'text-blue-500 ' : ''"
     >
