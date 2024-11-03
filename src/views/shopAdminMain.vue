@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full mb-4">
     <div class="w-full border-b border-gray-300">
       <h2 class="text-4xl text-blue-500">فروشگاه هگزاگون</h2>
       <h4 class="text-gray-600 mt-2 mb-3">محمد شکروی خوش آمدید</h4>
