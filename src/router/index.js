@@ -51,16 +51,25 @@ const router = createRouter({
           path: "/dashboard/main",
           name: "adminMain",
           component: shopAdminMain,
+          meta: {
+            title: "خانه",
+          },
         },
         {
           path: "/dashboard/products",
           name: "adminProducts",
           component: ShopAdminProducts,
+          meta: {
+            title: "محصولات",
+          },
         },
         {
           path: "/dashboard/profile",
           name: "adminProfile",
           component: shopAdminProfile,
+          meta: {
+            title: "حساب کاربری",
+          },
         },
       ],
     },
