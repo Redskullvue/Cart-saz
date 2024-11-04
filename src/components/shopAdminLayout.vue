@@ -9,11 +9,12 @@
       >
         افزودن سبد خرید
       </button>
-      <button
-        class="rounded-lg bg-black text-white py-3 text-sm md:text-lg w-24 md:w-32"
+      <router-link
+        to="/dashboard/createproduct"
+        class="rounded-lg bg-black text-center cursor-pointer text-white py-3 text-sm md:text-lg w-24 md:w-32"
       >
         ثبت محصول
-      </button>
+      </router-link>
     </div>
   </header>
   <div class="flex">
