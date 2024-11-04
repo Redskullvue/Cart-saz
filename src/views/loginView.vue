@@ -77,7 +77,7 @@
       </button>
     </div>
     <div class="w-full md:w-[40%] h-screen" v-if="currentLevel === 3">
-      <form class="flex flex-col p-10 gap-2">
+      <form id="login-form" class="flex flex-col p-10 gap-2">
         <label for="">نام و نام خانوادگی</label>
         <input
           type="text"
