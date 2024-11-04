@@ -9,6 +9,7 @@ import ShopAdminLayout from "@/components/shopAdminLayout.vue";
 import shopAdminMain from "@/views/shopAdminMain.vue";
 import ShopAdminProducts from "@/views/shopAdminProducts.vue";
 import shopAdminProfile from "@/views/shopAdminProfile.vue";
+import shopAdminCarts from "@/views/shopAdminCarts.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -51,16 +52,33 @@ const router = createRouter({
           path: "/dashboard/main",
           name: "adminMain",
           component: shopAdminMain,
+          meta: {
+            title: "خانه",
+          },
         },
         {
           path: "/dashboard/products",
           name: "adminProducts",
           component: ShopAdminProducts,
+          meta: {
+            title: "محصولات",
+          },
+        },
+        {
+          path: "/dashboard/carts",
+          name: "adminCarts",
+          component: shopAdminCarts,
+          meta: {
+            title: "سبدهای خرید",
+          },
         },
         {
           path: "/dashboard/profile",
           name: "adminProfile",
           component: shopAdminProfile,
+          meta: {
+            title: "حساب کاربری",
+          },
         },
       ],
     },

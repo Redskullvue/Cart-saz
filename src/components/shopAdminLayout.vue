@@ -2,7 +2,7 @@
   <header
     class="w-full md:h-20 border-b border-gray-500 py-3 px-20 flex flex-col md:flex-row items-center justify-between"
   >
-    <div class="font-bold text-xl">خانه</div>
+    <div class="font-bold text-xl">{{ route.meta.title }}</div>
     <div class="w-full md:w-max flex md:mt-0 mt-4 justify-around">
       <button
         class="rounded-lg bg-blue-500 text-white py-3 mx-2 w-24 text-sm md:text-lg md:w-32"
@@ -30,4 +30,8 @@
 <script setup>
 import shopAdminSideBar from "./shopAdminSideBar.vue";
 import shopAdminNav from "./shopAdminNav.vue";
+
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 </script>

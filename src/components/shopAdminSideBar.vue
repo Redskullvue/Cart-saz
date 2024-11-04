@@ -11,7 +11,7 @@
       خانه
     </router-link>
     <router-link
-      to="/dashboard/main"
+      to="/dashboard/carts"
       class="w-full flex gap-2"
       :class="route.path === '/dashboard/carts' ? 'text-blue-500 ' : ''"
     >
@@ -43,7 +43,6 @@ import { Icon } from "@iconify/vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-console.log(route.path);
 </script>
 
 <style scoped></style>

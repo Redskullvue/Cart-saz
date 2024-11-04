@@ -32,7 +32,7 @@
       width="23"
       height="23"
       style="color: black; animation-duration: 1s"
-      class="absolute bottom-14 md:bottom-[200px] animate-ping"
+      class="absolute bottom-14 md:bottom-32 animate-ping"
     />
   </div>
   <!-- Spliter -->

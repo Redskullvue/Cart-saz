@@ -11,7 +11,7 @@
       خانه
     </router-link>
     <router-link
-      to="/dashboard/main"
+      to="/dashboard/carts"
       class="w-full flex items-center flex-col justify-center"
       :class="route.path === '/dashboard/carts' ? 'text-blue-500 ' : ''"
     >
