@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-full grid md:grid-cols-3 grid-cols-1 md:gap-6 items-center justify-center"
+    class="w-full h-full grid md:grid-cols-2 grid-cols-1 md:gap-6 items-center justify-center"
   >
     <div class="flex flex-col">
       <div for="">*عنوان محصول</div>
@@ -66,6 +66,13 @@
         <Icon icon="gg:add" width="23" height="23" style="color: darkblue" />
         بارگذاری عکس
       </div>
+    </div>
+    <div class="w-full flex items-center justify-center mb-12">
+      <button
+        class="w-full bg-blue-500 text-white py-3 rounded-lg transition-colors duration-300 hover:bg-blue-600"
+      >
+        ثبت محصول
+      </button>
     </div>
   </div>
 </template>
