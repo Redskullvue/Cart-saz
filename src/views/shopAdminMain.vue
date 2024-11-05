@@ -84,10 +84,7 @@
 import { Icon } from "@iconify/vue";
 import cartCard from "@/components/cartCard.vue";
 import { ref } from "vue";
-
-const dateCreator = () => {
-  return new Date().toLocaleDateString("fa-IR");
-};
+import { dateCreator } from "@/composables/dateCreator";
 
 const carts = ref([
   {

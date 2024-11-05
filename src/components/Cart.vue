@@ -1,12 +1,15 @@
 <template>
-  <div class="w-full rounded-lg border border-gray-400 h-40">
+  <router-link
+    :to="'/dashboard/cart/' + data.id"
+    class="w-full rounded-lg border border-gray-400 h-40"
+  >
     <div class="w-full h-2/3 p-2 flex items-center justify-between">
       <div>
-        <h2 class="font-semibold text-xl">محمدرضا علوی</h2>
-        <p class="text-gray-400">ایجاد شده در تاریخ ۱۲/۱/۱</p>
+        <h2 class="font-semibold text-xl">{{ data.title }}</h2>
+        <p class="text-gray-400">ایجاد شده در تاریخ {{ data.date }}</p>
       </div>
       <div>
-        <p>۲۵۰.۰۰۰ تومان</p>
+        <p>{{ data.price }} تومان</p>
         <div
           class="max-w-24 rounded-full text-center mt-3 bg-green-400 text-green-800 py-1"
         >
@@ -33,9 +36,21 @@
         class="w-[33px] h-[33px]"
       />
     </div>
-  </div>
+  </router-link>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+  data: {
+    type: {
+      title: String,
+      id: Number,
+      price: String,
+      date: String,
+    },
+    required: true,
+  },
+});
+</script>
 
 <style scoped></style>

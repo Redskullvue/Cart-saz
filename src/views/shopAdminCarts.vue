@@ -25,13 +25,48 @@
 
     <!-- Carts Section -->
     <div class="w-full md:p-10 grid md:grid-cols-3 grid-cols-1 gap-4 mb-10">
-      <Cart v-for="i in 5" :key="i" />
+      <Cart v-for="cart in carts" :key="cart.id" :data="cart" />
     </div>
   </div>
 </template>
 
 <script setup>
 import Cart from "@/components/Cart.vue";
+import { ref } from "vue";
+import { dateCreator } from "@/composables/dateCreator";
+
+const carts = ref([
+  {
+    title: "احسان عزتی",
+    date: dateCreator(),
+    id: 1,
+    price: "۵۰.۰۰۰",
+  },
+  {
+    title: "احسان عزتی",
+    date: dateCreator(),
+    id: 2,
+    price: "۵۰.۰۰۰",
+  },
+  {
+    title: "احسان عزتی",
+    date: dateCreator(),
+    id: 3,
+    price: "۵۰.۰۰۰",
+  },
+  {
+    title: "احسان عزتی",
+    date: dateCreator(),
+    id: 4,
+    price: "۵۰.۰۰۰",
+  },
+  {
+    title: "احسان عزتی",
+    date: dateCreator(),
+    id: 5,
+    price: "۵۰.۰۰۰",
+  },
+]);
 </script>
 
 <style scoped></style>
