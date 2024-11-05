@@ -11,6 +11,7 @@ import ShopAdminProducts from "@/views/shopAdminProducts.vue";
 import shopAdminProfile from "@/views/shopAdminProfile.vue";
 import shopAdminCarts from "@/views/shopAdminCarts.vue";
 import CreateProductView from "@/views/CreateProductView.vue";
+import SingleCartView from "@/views/SingleCartView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -88,6 +89,11 @@ const router = createRouter({
           meta: {
             title: "افزودن محصول جدید",
           },
+        },
+        {
+          path: "/dashboard/cart/:cartid",
+          name: "singleCartView",
+          component: SingleCartView,
         },
       ],
     },
