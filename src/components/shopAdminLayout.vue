@@ -4,11 +4,12 @@
   >
     <div class="font-bold text-xl">{{ route.meta.title }}</div>
     <div class="w-full md:w-max flex md:mt-0 mt-4 justify-around">
-      <button
-        class="rounded-lg bg-blue-500 text-white py-3 mx-2 w-24 text-sm md:text-lg md:w-32"
+      <router-link
+        to="/dashboard/cart/add"
+        class="rounded-lg bg-blue-500 text-white py-3 mx-2 w-24 flex items-center justify-center text-sm md:text-lg md:w-32"
       >
         افزودن سبد خرید
-      </button>
+      </router-link>
       <router-link
         to="/dashboard/createproduct"
         class="rounded-lg bg-black text-center cursor-pointer text-white py-3 text-sm md:text-lg w-24 md:w-32"

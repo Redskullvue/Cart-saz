@@ -12,6 +12,7 @@ import shopAdminProfile from "@/views/shopAdminProfile.vue";
 import shopAdminCarts from "@/views/shopAdminCarts.vue";
 import CreateProductView from "@/views/CreateProductView.vue";
 import SingleCartView from "@/views/SingleCartView.vue";
+import CreateNewCartView from "@/views/createNewCartView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -94,10 +95,27 @@ const router = createRouter({
           path: "/dashboard/cart/:cartid",
           name: "singleCartView",
           component: SingleCartView,
+          meta: {
+            title: "سبد خرید",
+          },
+        },
+        {
+          path: "/dashboard/cart/add",
+          name: "createNewCartView",
+          component: CreateNewCartView,
+          meta: {
+            title: "ساخت سبد خرید",
+          },
         },
       ],
     },
   ],
+});
+
+router.beforeEach((to) => {
+  const { title } = to.meta;
+  const defaultTitle = "کارت ساز";
+  document.title = title || defaultTitle;
 });
 
 export default router;
