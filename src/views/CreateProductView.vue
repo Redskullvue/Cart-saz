@@ -52,16 +52,7 @@
         class="border w-full border-gray-400 rounded-lg py-3 px-1 self-center my-6 md:mt-10 mb-4 max-h-[50px] flex justify-between"
       >
         <p class="text-gray-500 font-light">نمایش در ویترین</p>
-        <div
-          @click="toggleVitrin = !toggleVitrin"
-          class="rounded-full w-14 h-7 p-1 flex flex-row-reverse items-center justify-between cursor-pointer"
-          :class="toggleVitrin ? 'bg-blue-600' : 'bg-gray-300'"
-        >
-          <div
-            class="w-6 h-6 rounded-full border bg-white transition-all duration-300"
-            :class="toggleVitrin ? ' translate-x-6' : ''"
-          ></div>
-        </div>
+        <ToggleButton />
       </div>
       <!-- Upload Pictures -->
       <div class="w-full flex gap-2">
@@ -84,10 +75,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { Icon } from "@iconify/vue";
-
-const toggleVitrin = ref(true);
+import ToggleButton from "@/components/ToggleButton.vue";
 </script>
 
 <style scoped></style>
