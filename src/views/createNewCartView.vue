@@ -26,6 +26,7 @@
     <div class="flex items-center justify-center w-full p-10 z-30">
       <button
         class="bg-blue-500 text-white rounded-lg py-3 px-1 w-full md:w-1/3 mt-4"
+        @click="addNewProduct"
       >
         افزودن محصول
       </button>
@@ -37,13 +38,21 @@
 import { ref } from "vue";
 import productCard from "@/components/productCard.vue";
 
-const products = [
+const products = ref([
   {
     title: "روغن زیتون",
     price: "۳۰.۰۰۰",
     img: "product1.png",
   },
-];
+]);
+
+const addNewProduct = () => {
+  products.value.push({
+    title: "روغن زیتون",
+    price: "۳۰.۰۰۰",
+    img: "product1.png",
+  });
+};
 </script>
 
 <style scoped></style>
