@@ -13,6 +13,7 @@ import shopAdminCarts from "@/views/shopAdminCarts.vue";
 import CreateProductView from "@/views/CreateProductView.vue";
 import SingleCartView from "@/views/SingleCartView.vue";
 import CreateNewCartView from "@/views/createNewCartView.vue";
+import VitrinView from "@/views/VitrinView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -105,6 +106,14 @@ const router = createRouter({
           component: CreateNewCartView,
           meta: {
             title: "ساخت سبد خرید",
+          },
+        },
+        {
+          path: "/dashboard/vitrin",
+          name: "VitrinView",
+          component: VitrinView,
+          meta: {
+            title: "ویترین شما",
           },
         },
       ],

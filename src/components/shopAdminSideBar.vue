@@ -11,6 +11,14 @@
       خانه
     </router-link>
     <router-link
+      to="/dashboard/vitrin"
+      class="w-full flex gap-2"
+      :class="route.path === '/dashboard/vitrin' ? 'text-blue-500 ' : ''"
+    >
+      <Icon icon="solar:shop-broken" width="23" height="23" />
+      ویترین
+    </router-link>
+    <router-link
       to="/dashboard/carts"
       class="w-full flex gap-2"
       :class="route.path === '/dashboard/carts' ? 'text-blue-500 ' : ''"
