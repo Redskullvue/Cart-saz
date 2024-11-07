@@ -14,21 +14,29 @@
     <div>
       <Icon
         icon="iconamoon:trash-thin"
+        v-if="button === 'delete'"
         width="30"
         height="30"
         class="text-gray-500 transition-colors duration-300 hover:text-red-500 cursor-pointer"
       />
+      <ToggleButton v-if="button === 'toggleButton'" />
     </div>
   </div>
 </template>
 
 <script setup>
 import { Icon } from "@iconify/vue";
+import ToggleButton from "./ToggleButton.vue";
 
 const props = defineProps({
   data: {
     type: Object,
     required: true,
+  },
+  button: {
+    type: String,
+    required: false,
+    default: "delete",
   },
 });
 
