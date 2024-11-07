@@ -26,22 +26,25 @@
       </button>
     </div>
     <ul class="w-full mt-10 mb-12">
-      <li
-        class="flex items-center justify-between border-b border-gray-200 py-4"
-      >
-        <div class="flex gap-2">
-          <Icon icon="tabler:cube" width="23" height="23" />
-          <p>محصولات ویترین</p>
-        </div>
-        <div class="flex gap-x-3">
-          <p class="font-light text-green-500">۳</p>
-          <Icon
-            icon="mi:chevron-left"
-            width="23"
-            height="23"
-            style="color: black"
-          />
-        </div>
+      <li>
+        <router-link
+          class="flex items-center justify-between border-b border-gray-200 py-4"
+          to="/dashboard/vitrin/products"
+        >
+          <div class="flex gap-2">
+            <Icon icon="tabler:cube" width="23" height="23" />
+            <p>محصولات ویترین</p>
+          </div>
+          <div class="flex gap-x-3">
+            <p class="font-light text-green-500">۳</p>
+            <Icon
+              icon="mi:chevron-left"
+              width="23"
+              height="23"
+              style="color: black"
+            />
+          </div>
+        </router-link>
       </li>
       <li
         class="flex items-center justify-between border-b border-gray-200 py-4"
