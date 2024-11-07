@@ -22,6 +22,7 @@
         :key="index"
         :data="product"
         button="toggleButton"
+        class="my-4"
       />
     </div>
   </div>
@@ -37,6 +38,11 @@ const products = ref([
     title: "روغن زیتون",
     price: "۳۰.۰۰۰",
     img: "product1.png",
+  },
+  {
+    title: "روغن زیتون",
+    price: "۳۰.۰۰۰",
+    img: "product2.png",
   },
 ]);
 </script>
