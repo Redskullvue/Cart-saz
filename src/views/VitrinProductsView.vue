@@ -16,13 +16,12 @@
         placeholder="جستجو محصول"
       />
     </div>
-    <div class="w-full mt-6">
+    <div class="w-full mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
       <productCard
         v-for="(product, index) in products"
         :key="index"
         :data="product"
         button="toggleButton"
-        class="my-4"
       />
     </div>
   </div>
