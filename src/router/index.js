@@ -16,6 +16,7 @@ import CreateNewCartView from "@/views/createNewCartView.vue";
 import VitrinView from "@/views/VitrinView.vue";
 import VitrinProductsView from "@/views/VitrinProductsView.vue";
 import VitrinContactView from "@/views/VitrinContactView.vue";
+import VitrinSettingView from "@/views/VitrinSettingView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -132,6 +133,14 @@ const router = createRouter({
           component: VitrinContactView,
           meta: {
             title: "اطلاعات تماس",
+          },
+        },
+        {
+          path: "/dashboard/vitrin/setting",
+          name: "VitrinSettingView",
+          component: VitrinSettingView,
+          meta: {
+            title: "تنظیمات کلی ویترین",
           },
         },
       ],
