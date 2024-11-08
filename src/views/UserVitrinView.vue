@@ -1,7 +1,11 @@
 <template>
-  <div>this is what user will see when qr code scanned</div>
+  <div class="w-full flex items-center justify-center">
+    <vitrinNavBar class="-mt-4" />
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import vitrinNavBar from "@/components/vitrinNavBar.vue";
+</script>
 
 <style scoped></style>

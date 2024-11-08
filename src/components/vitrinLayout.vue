@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <header
-      class="w-full bg-blue-500 h-32 rounded-b-xl p-4 flex gap-3 items-center text-white"
+      class="w-full bg-blue-500 h-48 rounded-b-xl p-4 flex gap-3 items-center text-white"
     >
       <div>
         <img src="../assets/images/vitrin-logo.png" alt="vitrin-logo" />
