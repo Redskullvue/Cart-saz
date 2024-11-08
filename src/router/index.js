@@ -20,6 +20,7 @@ import VitrinSettingView from "@/views/VitrinSettingView.vue";
 import VitrinQrCodeView from "@/views/VitrinQrCodeView.vue";
 import VitrinLayout from "@/components/vitrinLayout.vue";
 import UserVitrinView from "@/views/UserVitrinView.vue";
+import UserVitrinContact from "@/views/userVitrinContact.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -165,6 +166,11 @@ const router = createRouter({
           path: "/vitrin",
           name: "userVitrinView",
           component: UserVitrinView,
+        },
+        {
+          path: "/vitrin/contacts",
+          name: "userVitrinContact",
+          component: UserVitrinContact,
         },
       ],
     },

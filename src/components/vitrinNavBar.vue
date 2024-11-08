@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[95%] rounded-lg py-3 px-1 border border-gray-300 flex items-center justify-around bg-white"
+    class="w-[95%] md:w-[40%] rounded-lg py-3 px-1 border border-gray-300 flex items-center justify-around bg-white"
   >
     <router-link
       to="/vitrin"
