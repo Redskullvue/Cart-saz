@@ -90,26 +90,29 @@
           </div>
         </router-link>
       </li>
-      <li
-        class="flex items-center justify-between border-b border-gray-200 py-4"
-      >
-        <div class="flex gap-2">
-          <Icon
-            icon="ic:round-qr-code"
-            width="23"
-            height="23"
-            style="color: black"
-          />
-          <p>دریافت Qr Code</p>
-        </div>
-        <div>
-          <Icon
-            icon="mi:chevron-left"
-            width="23"
-            height="23"
-            style="color: black"
-          />
-        </div>
+      <li>
+        <router-link
+          to="/dashboard/vitrin/qrcode"
+          class="flex items-center justify-between border-b border-gray-200 py-4"
+        >
+          <div class="flex gap-2">
+            <Icon
+              icon="ic:round-qr-code"
+              width="23"
+              height="23"
+              style="color: black"
+            />
+            <p>دریافت Qr Code</p>
+          </div>
+          <div>
+            <Icon
+              icon="mi:chevron-left"
+              width="23"
+              height="23"
+              style="color: black"
+            />
+          </div>
+        </router-link>
       </li>
     </ul>
   </div>

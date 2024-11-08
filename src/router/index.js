@@ -17,6 +17,7 @@ import VitrinView from "@/views/VitrinView.vue";
 import VitrinProductsView from "@/views/VitrinProductsView.vue";
 import VitrinContactView from "@/views/VitrinContactView.vue";
 import VitrinSettingView from "@/views/VitrinSettingView.vue";
+import VitrinQrCodeView from "@/views/VitrinQrCodeView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -141,6 +142,14 @@ const router = createRouter({
           component: VitrinSettingView,
           meta: {
             title: "تنظیمات کلی ویترین",
+          },
+        },
+        {
+          path: "/dashboard/vitrin/qrcode",
+          name: "VitrinQrCodeView",
+          component: VitrinQrCodeView,
+          meta: {
+            title: "Qr Code",
           },
         },
       ],
