@@ -11,12 +11,17 @@
         <p class="text-gray-300 text-sm">فروش لباس های مجلسی</p>
       </div>
     </header>
+    <div class="w-full flex items-center justify-center">
+      <vitrinNavBar class="-mt-4" />
+    </div>
     <main>
       <router-view></router-view>
     </main>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import vitrinNavBar from "./vitrinNavBar.vue";
+</script>
 
 <style scoped></style>
