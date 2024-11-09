@@ -27,13 +27,6 @@
         کنید و آن را اختصاصی استفاده کنید
       </p>
     </div>
-    <Icon
-      icon="solar:arrow-down-outline"
-      width="23"
-      height="23"
-      style="color: black; animation-duration: 1s"
-      class="absolute bottom-14 md:bottom-32 animate-ping"
-    />
   </div>
   <!-- Spliter -->
   <div class="w-full flex items-center justify-center h-2">
@@ -98,7 +91,8 @@
           تست کنید
         </p>
         <div class="flex items-center justify-center mt-6">
-          <button
+          <router-link
+            to="/login"
             class="rounded-full w-52 flex justify-center gap-4 py-4 bg-orange-500 text-center px-4 transition-colors duration-300 hover:bg-orange-600"
           >
             <Icon
@@ -108,7 +102,7 @@
               style="color: white"
             />
             <span class="text-white">ثبت نام رایگان</span>
-          </button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -141,25 +135,25 @@ const serviceCards = [
     title: "ایجاد سبد خرید اختصاصی",
     description: `با ایجاد سبد خرید اختصاصی بدون نیاز به کاربران سبد خریدهای آن هارا
           خودتان بسازیذ و برای هرکدام لینک اختصاصی دریافت کنید`,
-    img: "",
+    img: "service-pic-1.png",
   },
   {
     title: "ثبت حساب",
     description:
       "در کارت ساز حساب شما ثبت میشود‌ و کسی جز شما نمیتواند وارد حساب شود",
-    img: "",
+    img: "service-pic-2.png",
   },
   {
     title: "مدیریت زمان",
     description:
       "به راحتی با ساخت سبد های خرید اختصاصی زمان خود را کاهش دهید و آن را به راحتی مدیریت کنید",
-    img: "",
+    img: "service-pic-3.png",
   },
   {
     title: "ثبت محصول",
     description:
       "قبل از هرچیزی محصولات خود را ثبت کنید و برای آنها عکس بگذارید تا در سبد خرید درج شوند",
-    img: "",
+    img: "service-pic-4.png",
   },
 ];
 </script>
