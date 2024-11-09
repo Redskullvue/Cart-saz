@@ -22,6 +22,7 @@ import VitrinLayout from "@/components/vitrinLayout.vue";
 import UserVitrinView from "@/views/UserVitrinView.vue";
 import UserVitrinContact from "@/views/userVitrinContact.vue";
 import SingleProductView from "@/views/SingleProductView.vue";
+import UserCartView from "@/views/userCartView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -179,6 +180,11 @@ const router = createRouter({
       path: "/products/:id",
       name: "SingleProductView",
       component: SingleProductView,
+    },
+    {
+      path: "/user/:cartid",
+      name: "userCartView",
+      component: UserCartView,
     },
   ],
 });
