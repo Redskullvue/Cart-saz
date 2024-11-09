@@ -9,6 +9,7 @@
         سفارش های اینترنتی
       </h1>
       <button
+        @click="playingTutorialVideo = true"
         class="bg-blue-500 flex text-white rounded-full px-6 py-4 mt-10 gap-2 transition-colors duration-300 hover:bg-blue-600"
       >
         <i
@@ -123,12 +124,33 @@
     <div class="w-full flex items-center justify-center h-2">
       <div class="w-2/3 bg-gray-100 h-full"></div>
     </div>
+    <div
+      class="w-full h-screen top-0 flex items-center justify-center z-30 absolute flex-col md:flex-row"
+      v-if="playingTutorialVideo"
+    >
+      <button
+        @click="playingTutorialVideo = false"
+        class="w-full h-full"
+      ></button>
+      <video class="w-[90%] md:w-[60%] md:h-[50%]" controls>
+        <source
+          src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+      <button
+        @click="playingTutorialVideo = false"
+        class="w-full h-full"
+      ></button>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { Icon } from "@iconify/vue";
 import serviceCard from "@/components/serviceCard.vue";
+import { ref } from "vue";
 
 const serviceCards = [
   {
@@ -156,6 +178,8 @@ const serviceCards = [
     img: "service-pic-4.png",
   },
 ];
+
+const playingTutorialVideo = ref(false);
 </script>
 
 <style scoped></style>
