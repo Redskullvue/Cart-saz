@@ -12,8 +12,12 @@
       <router-link to="/تماس-با-ما">تماس با ما</router-link>
     </div>
     <div class="flex items-center gap-5">
-      <img src="../assets/images/instagram.svg" alt="instagram" />
-      <img src="../assets/images/telegram.svg" alt="telegram" />
+      <a href="https://instagram.com/">
+        <img src="../assets/images/instagram.svg" alt="instagram" />
+      </a>
+      <a href="https://telegram.com">
+        <img src="../assets/images/telegram.svg" alt="telegram" />
+      </a>
     </div>
   </div>
 </template>

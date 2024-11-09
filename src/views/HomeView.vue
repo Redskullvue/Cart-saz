@@ -9,6 +9,7 @@
         سفارش های اینترنتی
       </h1>
       <button
+        @click="playingTutorialVideo = true"
         class="bg-blue-500 flex text-white rounded-full px-6 py-4 mt-10 gap-2 transition-colors duration-300 hover:bg-blue-600"
       >
         <i
@@ -27,13 +28,6 @@
         کنید و آن را اختصاصی استفاده کنید
       </p>
     </div>
-    <Icon
-      icon="solar:arrow-down-outline"
-      width="23"
-      height="23"
-      style="color: black; animation-duration: 1s"
-      class="absolute bottom-14 md:bottom-32 animate-ping"
-    />
   </div>
   <!-- Spliter -->
   <div class="w-full flex items-center justify-center h-2">
@@ -98,7 +92,8 @@
           تست کنید
         </p>
         <div class="flex items-center justify-center mt-6">
-          <button
+          <router-link
+            to="/login"
             class="rounded-full w-52 flex justify-center gap-4 py-4 bg-orange-500 text-center px-4 transition-colors duration-300 hover:bg-orange-600"
           >
             <Icon
@@ -108,7 +103,7 @@
               style="color: white"
             />
             <span class="text-white">ثبت نام رایگان</span>
-          </button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -129,39 +124,62 @@
     <div class="w-full flex items-center justify-center h-2">
       <div class="w-2/3 bg-gray-100 h-full"></div>
     </div>
+    <div
+      class="w-full h-screen top-0 flex items-center justify-center z-30 absolute flex-col md:flex-row"
+      v-if="playingTutorialVideo"
+    >
+      <button
+        @click="playingTutorialVideo = false"
+        class="w-full h-full"
+      ></button>
+      <video class="w-[90%] md:w-[60%] md:h-[50%]" controls>
+        <source
+          src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+      <button
+        @click="playingTutorialVideo = false"
+        class="w-full h-full"
+      ></button>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { Icon } from "@iconify/vue";
 import serviceCard from "@/components/serviceCard.vue";
+import { ref } from "vue";
 
 const serviceCards = [
   {
     title: "ایجاد سبد خرید اختصاصی",
     description: `با ایجاد سبد خرید اختصاصی بدون نیاز به کاربران سبد خریدهای آن هارا
           خودتان بسازیذ و برای هرکدام لینک اختصاصی دریافت کنید`,
-    img: "",
+    img: "service-pic-1.png",
   },
   {
     title: "ثبت حساب",
     description:
       "در کارت ساز حساب شما ثبت میشود‌ و کسی جز شما نمیتواند وارد حساب شود",
-    img: "",
+    img: "service-pic-2.png",
   },
   {
     title: "مدیریت زمان",
     description:
       "به راحتی با ساخت سبد های خرید اختصاصی زمان خود را کاهش دهید و آن را به راحتی مدیریت کنید",
-    img: "",
+    img: "service-pic-3.png",
   },
   {
     title: "ثبت محصول",
     description:
       "قبل از هرچیزی محصولات خود را ثبت کنید و برای آنها عکس بگذارید تا در سبد خرید درج شوند",
-    img: "",
+    img: "service-pic-4.png",
   },
 ];
+
+const playingTutorialVideo = ref(false);
 </script>
 
 <style scoped></style>
