@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[75vh] w-full p-32 flex">
+  <div class="h-full md:h-[75vh] w-full p-6 md:p-32 flex">
     <div class="md:w-1/2 w-full h-full">
       <h1 class="text-blue-500 text-4xl font-bold">تماس با ما</h1>
       <p class="text-lg mt-6 text-gray-700">
@@ -7,7 +7,7 @@
       </p>
       <div class="flex flex-col items-start mt-6 gap-4">
         <button
-          class="border border-red-500 w-full md:w-1/3 py-4 rounded-xl text-red-700 flex items-center justify-center gap-2"
+          class="border border-red-500 w-full md:w-1/2 py-4 rounded-xl text-red-700 flex items-center justify-center gap-2"
         >
           <Icon
             icon="basil:instagram-solid"
@@ -18,7 +18,7 @@
           مسیج در اینستاگرام
         </button>
         <button
-          class="border border-green-500 text-green-600 rounded-xl py-4 w-full md:w-1/3 flex items-center justify-center gap-2"
+          class="border border-green-500 text-green-600 rounded-xl py-4 w-full md:w-1/2 flex items-center justify-center gap-2"
         >
           <Icon icon="logos:whatsapp-icon" width="23" height="23" />
           تماس در واتس آب
