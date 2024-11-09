@@ -96,7 +96,67 @@
       </button>
     </div>
   </div>
-  <div class="w-full" v-if="currentLevel === 3">This is the level 3</div>
+  <div class="w-full" v-if="currentLevel === 3">
+    <div
+      class="flex md:w-[60%] items-center justify-center flex-col border-b border-gray-300 w-full py-3"
+    >
+      <h2 class="text-blue-500 text-2xl md:text-3xl font-bold">
+        فروشگاه هگزاگون
+      </h2>
+      <p class="mt-4 text-gray-500">سبد خرید ۲</p>
+    </div>
+    <div class="w-full mt-6 p-4">
+      <div>
+        <label for="">نام و نام خانوادگی گیرنده</label>
+      </div>
+
+      <input
+        type="text"
+        placeholder="محسن رضایی"
+        class="mt-4 rounded-lg border border-gray-300 w-full py-3 px-1"
+      />
+      <div class="mt-6">
+        <label for="">آدرس گیرنده</label>
+      </div>
+
+      <input
+        type="text"
+        placeholder="تهران - خیابان ایتالیا - ۹۵"
+        class="mt-4 rounded-lg border border-gray-300 w-full py-3 px-1"
+      />
+      <div class="mt-6">
+        <label for="">کدبستی گیرنده </label>
+      </div>
+
+      <input
+        type="text"
+        placeholder="۱۲۳۴۵۶۷۸۹۱۰"
+        class="mt-4 rounded-lg border border-gray-300 w-full py-3 px-1"
+      />
+      <div class="w-full flex items-center justify-center mt-8 md:w-[40%]">
+        <button
+          class="w-full rounded-lg py-3 px-1 text-white bg-blue-500"
+          @click="currentLevel = 4"
+        >
+          ثبت سفارش
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="w-full flex flex-col items-center justify-center h-screen p-4"
+    v-if="currentLevel === 4"
+  >
+    <h2 class="text-3xl text-blue-500">سفارش با موفقیت ثبت شد</h2>
+    <p class="mt-6">کد سفارش :‌۰۰۲</p>
+
+    <router-link
+      to="/vitrin"
+      class="w-full rounded-lg py-3 px-1 bg-blue-500 flex items-center justify-center text-white mt-6"
+    >
+      بازگشت به ویترین
+    </router-link>
+  </div>
 </template>
 
 <script setup>
