@@ -41,7 +41,7 @@ const router = createRouter({
           component: HomeView,
         },
         {
-          path: "/تماس-با-ما",
+          path: "/contact-us",
           name: "contactUs",
           component: ContactUsView,
         },

@@ -9,7 +9,7 @@
     <div class="md:hidden flex items-center justify-center gap-5 mt-5 mb-5">
       <router-link to="/">وبلاگ</router-link>
       <router-link to="/faq">سوالات متداول</router-link>
-      <router-link to="/تماس-با-ما">تماس با ما</router-link>
+      <router-link to="/contact-us">تماس با ما</router-link>
     </div>
     <div class="flex items-center gap-5">
       <a href="https://instagram.com/">
