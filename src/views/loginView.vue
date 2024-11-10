@@ -142,16 +142,21 @@ const toast = useToast();
 const currentLevel = ref(1);
 const phoneNumberInput = ref("");
 
+const randomCodeGenerator = () => {
+  let num = Math.floor(Math.random() * 100000);
+  return num;
+};
 const submitPhoneNumber = () => {
   const firstNumber = phoneNumberInput.value.at(0);
-  console.log(firstNumber);
   if (
     phoneNumberInput.value &&
     phoneNumberInput.value.length === 10 &&
     firstNumber === "9"
   ) {
     currentLevel.value = 2;
-    toast.success("کد تایید به تلفن شما ارسال شد");
+    toast.success(
+      `به دلیل نبود سرویس اس ام اس و سرویس بروکسی از کد ساخته شده استفاده کنید :${randomCodeGenerator()}`
+    );
     console.log("test");
   } else {
     toast.error(
