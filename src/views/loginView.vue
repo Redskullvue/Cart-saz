@@ -175,6 +175,7 @@ const submitPhoneNumber = () => {
       .then(() => {
         currentLevel.value = 2;
         toast.success("کد تایید به تلفن شما ارسال شد");
+        console.log("test");
       })
       .catch((err) => {
         console.log(err);
