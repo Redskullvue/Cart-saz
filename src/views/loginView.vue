@@ -26,7 +26,11 @@
         class="flex border border-gray-500 w-[90%] p-2 rounded-lg"
         v-if="currentLevel === 1"
       >
-        <input type="tel" class="w-full py-2 focus:outline-none" />
+        <input
+          type="tel"
+          class="w-full py-2 focus:outline-none"
+          v-model="phoneNumberInput"
+        />
         <div class="flex p-2 gap-1">
           ۹۸+
           <img src="../assets/images/iran.svg" alt="iran-flag" />
@@ -63,7 +67,7 @@
       </p>
       <button
         v-if="currentLevel === 1"
-        @click="currentLevel = 2"
+        @click="submitPhoneNumber"
         class="w-[90%] mt-6 py-4 text-white bg-blue-500 rounded-lg transition-colors duration-300 hover:bg-blue-600"
       >
         ورود
@@ -133,8 +137,54 @@
 
 <script setup>
 import { ref } from "vue";
+import { useToast } from "vue-toastification";
+import axiosInstance from "@/composables/axiosClient";
 
+const toast = useToast();
 const currentLevel = ref(1);
+const phoneNumberInput = ref("");
+const apiKey = import.meta.env.VITE_API_KEY;
+
+const submitPhoneNumber = () => {
+  const firstNumber = phoneNumberInput.value.at(0);
+  console.log(firstNumber);
+  if (
+    phoneNumberInput.value &&
+    phoneNumberInput.value.length === 10 &&
+    firstNumber === "9"
+  ) {
+    axiosInstance
+      .post(
+        "messages",
+        {
+          recipient: {
+            to: "98" + phoneNumberInput.value,
+          },
+          body: {
+            text: "99412",
+          },
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "X-Api-Key": apiKey,
+          },
+        }
+      )
+      .then(() => {
+        currentLevel.value = 2;
+        toast.success("کد تایید به تلفن شما ارسال شد");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    toast.error(
+      "شماره وراد شده معتبر نیست , شماره خود را بدون ۰ و به فرمت انگلیسی وارد کنید"
+    );
+  }
+};
 </script>
 
 <style scoped></style>
