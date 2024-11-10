@@ -138,12 +138,9 @@
 <script setup>
 import { ref } from "vue";
 import { useToast } from "vue-toastification";
-import axiosInstance from "@/composables/axiosClient";
-
 const toast = useToast();
 const currentLevel = ref(1);
 const phoneNumberInput = ref("");
-const apiKey = import.meta.env.VITE_API_KEY;
 
 const submitPhoneNumber = () => {
   const firstNumber = phoneNumberInput.value.at(0);
@@ -153,33 +150,9 @@ const submitPhoneNumber = () => {
     phoneNumberInput.value.length === 10 &&
     firstNumber === "9"
   ) {
-    axiosInstance
-      .post(
-        "messages",
-        {
-          recipient: {
-            to: "98" + phoneNumberInput.value,
-          },
-          body: {
-            text: "99412",
-          },
-        },
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "X-Api-Key": apiKey,
-          },
-        }
-      )
-      .then(() => {
-        currentLevel.value = 2;
-        toast.success("کد تایید به تلفن شما ارسال شد");
-        console.log("test");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    currentLevel.value = 2;
+    toast.success("کد تایید به تلفن شما ارسال شد");
+    console.log("test");
   } else {
     toast.error(
       "شماره وراد شده معتبر نیست , شماره خود را بدون ۰ و به فرمت انگلیسی وارد کنید"
