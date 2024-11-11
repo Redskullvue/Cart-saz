@@ -82,6 +82,13 @@
         }}
         دقیقه دیگر
       </p>
+      <p
+        v-if="seconds === 0 && minutes === 0"
+        class="mt-2 t ext-gray-600"
+        @click="resendCode"
+      >
+        ارسال مجدد کد
+      </p>
       <button
         v-if="currentLevel === 1"
         @click="submitPhoneNumber"
@@ -171,12 +178,14 @@ const OTPcode = ref(null);
 
 // This whole section belongs to this countdown part
 const minutes = ref(1);
-const seconds = ref(30);
+const seconds = ref(1);
 const countDowner = () => {
   setInterval(() => {
     if (minutes.value >= 0) {
       if (seconds.value > 0) {
         seconds.value--;
+      } else if (seconds.value === 0 && minutes.value === 0) {
+        return;
       } else {
         minutes.value--;
         seconds.value = 59;
@@ -225,6 +234,10 @@ const submitCode = () => {
   } else {
     toast.error(`کد اشتباه است دوباره تلاش کنید : ${OTPcode.value}`);
   }
+};
+const resendCode = () => {
+  OTPcode.value = randomCodeGenerator();
+  toast.success(`کد مجدد :  ${OTPcode.value} `);
 };
 
 // This will change the focus from last input to the next after user fills it;
