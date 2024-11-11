@@ -38,32 +38,49 @@
       </div>
       <!-- Level 2 -->
       <div
-        class="flex w-[90%] p-2 items-center justify-center mt-2"
+        class="flex w-[90%] p-2 items-center flex-row-reverse justify-center mt-2"
         v-if="currentLevel === 2"
+        @input="inputFocusChanger"
       >
         <input
           type="text"
           class="border border-gray-500 w-[15%] rounded-lg h-16 mx-2"
+          v-model="codeOne"
+          maxlength="1"
         />
         <input
           type="text"
+          v-model="codeTwo"
           class="border border-gray-500 w-[15%] rounded-lg h-16 mx-2"
+          maxlength="1"
         />
         <input
           type="text"
+          v-model="codeThree"
           class="border border-gray-500 w-[15%] rounded-lg h-16 mx-2"
+          maxlength="1"
         />
         <input
           type="text"
+          v-model="codeFour"
           class="border border-gray-500 w-[15%] rounded-lg h-16 mx-2"
+          maxlength="1"
         />
         <input
           type="text"
+          v-model="codeFive"
           class="border border-gray-500 w-[15%] rounded-lg h-16 mx-2"
+          maxlength="1"
         />
       </div>
       <p class="mt-2 text-gray-600" v-if="currentLevel === 2">
-        ارسال مجدد کد تا ۱:۳۰ دقیقه دیگر
+        ارسال مجدد کد تا
+        {{
+          digitChanger(JSON.stringify(seconds)) +
+          " : " +
+          digitChanger(JSON.stringify(minutes))
+        }}
+        دقیقه دیگر
       </p>
       <button
         v-if="currentLevel === 1"
@@ -74,7 +91,7 @@
       </button>
       <button
         v-if="currentLevel === 2"
-        @click="currentLevel = 3"
+        @click="submitCode"
         class="w-[90%] mt-6 py-4 text-white bg-blue-500 rounded-lg transition-colors duration-300 hover:bg-blue-600"
       >
         ثبت کد
@@ -136,18 +153,49 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useToast } from "vue-toastification";
+import { digitChanger } from "@/composables/digitChanger";
+// This is for toastifications
 const toast = useToast();
+// This is to change the state of user
 const currentLevel = ref(1);
 const phoneNumberInput = ref("");
 
+const codeOne = ref("");
+const codeTwo = ref("");
+const codeThree = ref("");
+const codeFour = ref("");
+const codeFive = ref("");
+const OTPcode = ref(null);
+
+// This whole section belongs to this countdown part
+const minutes = ref(1);
+const seconds = ref(30);
+const countDowner = () => {
+  setInterval(() => {
+    if (minutes.value >= 0) {
+      if (seconds.value > 0) {
+        seconds.value--;
+      } else {
+        minutes.value--;
+        seconds.value = 59;
+      }
+    }
+  }, 1000);
+};
+
+onMounted(() => {
+  countDowner();
+});
+// This whole part belongs to countDown part
 const randomCodeGenerator = () => {
   let num = Math.floor(Math.random() * 100000);
   return num;
 };
 const submitPhoneNumber = () => {
   const firstNumber = phoneNumberInput.value.at(0);
+  OTPcode.value = randomCodeGenerator();
   if (
     phoneNumberInput.value &&
     phoneNumberInput.value.length === 10 &&
@@ -155,13 +203,42 @@ const submitPhoneNumber = () => {
   ) {
     currentLevel.value = 2;
     toast.success(
-      `به دلیل نبود سرویس اس ام اس و سرویس بروکسی از کد ساخته شده استفاده کنید :${randomCodeGenerator()}`
+      `به دلیل نبود سرویس اس ام اس و سرویس بروکسی از کد ساخته شده استفاده کنید :${OTPcode.value}`
     );
-    console.log("test");
   } else {
     toast.error(
       "شماره وراد شده معتبر نیست , شماره خود را بدون ۰ و به فرمت انگلیسی وارد کنید"
     );
+  }
+};
+
+const submitCode = () => {
+  const fullCode =
+    codeOne.value +
+    codeTwo.value +
+    codeThree.value +
+    codeFour.value +
+    codeFive.value;
+  if (JSON.stringify(OTPcode.value) === fullCode) {
+    toast.success("ورود موفقیت آمیز بود");
+    currentLevel.value = 3;
+  } else {
+    toast.error(`کد اشتباه است دوباره تلاش کنید : ${OTPcode.value}`);
+  }
+};
+
+// This will change the focus from last input to the next after user fills it;
+const inputFocusChanger = (e) => {
+  // This will take the element which had a change
+  let targetInput = e.srcElement;
+  // A Variable to switch to next input
+  var next = targetInput;
+  while ((next = next.nextElementSibling)) {
+    if (next == null) break;
+    if (next.tagName.toLowerCase() === "input") {
+      next.focus();
+      break;
+    }
   }
 };
 </script>
