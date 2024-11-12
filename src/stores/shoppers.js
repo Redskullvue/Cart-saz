@@ -1,4 +1,4 @@
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 
 export const useCounterStore = defineStore("shoppers", () => {
@@ -24,6 +24,7 @@ export const useCounterStore = defineStore("shoppers", () => {
   }
   function authUser() {
     isUserAuthed.value = true;
+    localStorage.setItem("isAuthed", isUserAuthed.value);
   }
   return {
     shopOwnerInformation,
