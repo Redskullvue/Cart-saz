@@ -286,7 +286,7 @@ const inputFocusChanger = (e) => {
 
 const submitUserInformation = () => {
   toast.success(`خوش آمدی :‌${store.shopOwnerInformation.name}`);
-  router.push(`/dashboard/main/${store.shopOwnerInformation.shopId}`);
+  router.push("/dashboard/main/");
 };
 </script>
 
