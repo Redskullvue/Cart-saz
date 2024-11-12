@@ -28,6 +28,7 @@ export const useCounterStore = defineStore("shoppers", () => {
   return {
     shopOwnerInformation,
     shopCategories,
+    isUserAuthed,
     setUserCategory,
     authUser,
   };

@@ -23,6 +23,8 @@ import UserVitrinView from "@/views/UserVitrinView.vue";
 import UserVitrinContact from "@/views/userVitrinContact.vue";
 import SingleProductView from "@/views/SingleProductView.vue";
 import UserCartView from "@/views/userCartView.vue";
+import { useCounterStore } from "@/stores/shoppers";
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -67,6 +69,7 @@ const router = createRouter({
           component: shopAdminMain,
           meta: {
             title: "خانه",
+            requiresAuth: true,
           },
         },
         {
@@ -193,6 +196,17 @@ router.beforeEach((to) => {
   const { title } = to.meta;
   const defaultTitle = "کارت ساز";
   document.title = title || defaultTitle;
+});
+
+router.beforeEach((to, from, next) => {
+  const store = useCounterStore();
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (store.isUserAuthed) {
+    } else {
+      router.push("/login");
+    }
+  }
+  next();
 });
 
 export default router;
