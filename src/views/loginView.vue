@@ -105,42 +105,61 @@
       </button>
     </div>
     <div class="w-full md:w-[40%] h-screen" v-if="currentLevel === 3">
-      <form id="login-form" class="flex flex-col p-10 gap-2">
+      <form
+        id="login-form"
+        class="flex flex-col p-10 gap-2"
+        @submit.prevent="submitUserInformation"
+      >
         <label for="">نام و نام خانوادگی</label>
         <input
           type="text"
+          v-model="store.shopOwnerInformation.name"
           placeholder="مثال : حسن اکبری"
           class="border border-gray-500 rounded-lg py-3 my-4 px-1"
+          required
         />
         <label for="">آیدی فروشگاه اینستاگرام</label>
         <input
           type="text"
+          v-model="store.shopOwnerInformation.shopId"
           placeholder="instagram/redskull"
           class="border border-gray-500 rounded-lg py-3 my-4 px-1"
+          required
         />
         <label for="">نام فروشگاه</label>
         <input
           type="text"
+          v-model="store.shopOwnerInformation.shopName"
           placeholder="برادران مملی به جز علی"
           class="border border-gray-500 rounded-lg py-3 my-4 px-1"
+          required
         />
         <label for="">نوع فعالیت فروشگاه</label>
         <select
           name="storeActivity"
+          @change="store.setUserCategory"
           class="bg-white border border-gray-500 rounded-lg py-3 my-4 px-1 text-gray-500"
         >
           <option :value="null">انتخاب کنید</option>
-          <option value="">2</option>
+          <option
+            v-for="(category, index) in store.shopCategories"
+            :key="index"
+            :value="category"
+          >
+            {{ category }}
+          </option>
         </select>
         <label for="">ایمیل (اختیاری)</label>
         <input
           type="text"
+          v-model="store.shopOwnerInformation.eMail"
           placeholder="email@gmail.com"
           class="border border-gray-500 rounded-lg py-3 my-4 px-1"
         />
         <label for="">کد بستی فرستنده (اختیاری)</label>
         <input
           type="text"
+          v-model="store.shopOwnerInformation.postalCode"
           placeholder="کد ۱۱ رقمی"
           class="border border-gray-500 rounded-lg py-3 my-4 px-1"
         />
@@ -163,13 +182,18 @@
 import { ref, onMounted } from "vue";
 import { useCounterStore } from "@/stores/shoppers";
 import { useToast } from "vue-toastification";
+import { useRouter } from "vue-router";
 import { digitChanger } from "@/composables/digitChanger";
+// This is for route intialization
+
+const router = useRouter();
+
 // This is for toastifications
 const toast = useToast();
 // Setup Store
 const store = useCounterStore();
 // This is to change the state of user
-const currentLevel = ref(1);
+const currentLevel = ref(3);
 const phoneNumberInput = ref("");
 
 const codeOne = ref("");
@@ -261,6 +285,11 @@ const inputFocusChanger = (e) => {
       break;
     }
   }
+};
+
+const submitUserInformation = () => {
+  toast.success(`خوش آمدی :‌${store.shopOwnerInformation.name}`);
+  router.push("/dashboard/main");
 };
 </script>
 

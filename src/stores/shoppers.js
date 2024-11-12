@@ -2,6 +2,8 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 
 export const useCounterStore = defineStore("shoppers", () => {
+  // STATES
+
   const shopOwnerInformation = ref({
     name: "",
     shopId: "",
@@ -11,5 +13,16 @@ export const useCounterStore = defineStore("shoppers", () => {
     postalCode: "",
   });
 
-  return { shopOwnerInformation };
+  const shopCategories = ref(["لباس", "مواد غذایی", "اکسسوری"]);
+
+  // Actions
+
+  function setUserCategory(e) {
+    shopOwnerInformation.value.shopCategory = e.target.value;
+  }
+  return {
+    shopOwnerInformation,
+    shopCategories,
+    setUserCategory,
+  };
 });
