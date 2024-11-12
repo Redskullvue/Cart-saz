@@ -23,7 +23,7 @@
         </h2>
         <div class="mt-4" v-if="carts.length > 0">
           <cart-card
-            v-for="(cart, index) in carts"
+            v-for="(cart, index) in store.shopOwnerInformation.createdCarts"
             :key="index"
             :index="index + 1"
             :info="cart"
