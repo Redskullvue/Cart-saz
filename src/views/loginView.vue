@@ -83,7 +83,7 @@
         دقیقه دیگر
       </p>
       <p
-        v-if="seconds === 0 && minutes === 0"
+        v-if="seconds === 0 && minutes === 0 && currentLevel === 2"
         class="mt-2 t ext-gray-600"
         @click="resendCode"
       >

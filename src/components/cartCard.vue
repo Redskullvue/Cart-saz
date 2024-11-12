@@ -8,7 +8,8 @@
       </p>
       <div>
         <h2 class="text-xl mb-1">
-          {{ digitChanger(JSON.stringify(info.productNumber)) }} محصول
+          {{ digitChanger(JSON.stringify(info.reciverProducts.length)) }}
+          محصول
         </h2>
         <p class="text-gray-600">
           ایجاد شده در <span class="mx-2">{{ info.date }}</span>
@@ -23,8 +24,21 @@
       <!-- Label Will be dynamic -->
       <div
         class="max-w-24 rounded-full text-center mt-3 bg-green-400 text-green-800 py-1"
+        v-if="info.status === 'ready'"
       >
         آماده ارسال
+      </div>
+      <div
+        class="max-w-24 rounded-full text-center mt-3 bg-yellow-400 text-yellow-800 py-1"
+        v-if="info.status === 'waiting'"
+      >
+        در انتظار
+      </div>
+      <div
+        class="max-w-24 rounded-full text-center mt-3 bg-red-400 text-red-800 py-1"
+        v-if="info.status === 'canceled'"
+      >
+        لغو شده
       </div>
     </div>
   </div>
