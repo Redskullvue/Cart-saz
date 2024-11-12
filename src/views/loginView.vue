@@ -193,7 +193,7 @@ const toast = useToast();
 // Setup Store
 const store = useCounterStore();
 // This is to change the state of user
-const currentLevel = ref(3);
+const currentLevel = ref(1);
 const phoneNumberInput = ref("");
 
 const codeOne = ref("");
@@ -289,7 +289,7 @@ const inputFocusChanger = (e) => {
 
 const submitUserInformation = () => {
   toast.success(`خوش آمدی :‌${store.shopOwnerInformation.name}`);
-  router.push("/dashboard/main");
+  router.push(`/dashboard/main/${store.shopOwnerInformation.shopId}`);
 };
 </script>
 
