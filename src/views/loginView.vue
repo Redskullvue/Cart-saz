@@ -82,6 +82,13 @@
         }}
         دقیقه دیگر
       </p>
+      <p
+        v-if="seconds === 0 && minutes === 0"
+        class="mt-2 t ext-gray-600"
+        @click="resendCode"
+      >
+        ارسال مجدد کد
+      </p>
       <button
         v-if="currentLevel === 1"
         @click="submitPhoneNumber"
@@ -98,42 +105,61 @@
       </button>
     </div>
     <div class="w-full md:w-[40%] h-screen" v-if="currentLevel === 3">
-      <form id="login-form" class="flex flex-col p-10 gap-2">
+      <form
+        id="login-form"
+        class="flex flex-col p-10 gap-2"
+        @submit.prevent="submitUserInformation"
+      >
         <label for="">نام و نام خانوادگی</label>
         <input
           type="text"
+          v-model="store.shopOwnerInformation.name"
           placeholder="مثال : حسن اکبری"
           class="border border-gray-500 rounded-lg py-3 my-4 px-1"
+          required
         />
         <label for="">آیدی فروشگاه اینستاگرام</label>
         <input
           type="text"
+          v-model="store.shopOwnerInformation.shopId"
           placeholder="instagram/redskull"
           class="border border-gray-500 rounded-lg py-3 my-4 px-1"
+          required
         />
         <label for="">نام فروشگاه</label>
         <input
           type="text"
+          v-model="store.shopOwnerInformation.shopName"
           placeholder="برادران مملی به جز علی"
           class="border border-gray-500 rounded-lg py-3 my-4 px-1"
+          required
         />
         <label for="">نوع فعالیت فروشگاه</label>
         <select
           name="storeActivity"
+          @change="store.setUserCategory"
           class="bg-white border border-gray-500 rounded-lg py-3 my-4 px-1 text-gray-500"
         >
-          <option value="">انتخاب کنید</option>
-          <option value="">2</option>
+          <option :value="null">انتخاب کنید</option>
+          <option
+            v-for="(category, index) in store.shopCategories"
+            :key="index"
+            :value="category"
+          >
+            {{ category }}
+          </option>
         </select>
         <label for="">ایمیل (اختیاری)</label>
         <input
           type="text"
+          v-model="store.shopOwnerInformation.eMail"
           placeholder="email@gmail.com"
           class="border border-gray-500 rounded-lg py-3 my-4 px-1"
         />
         <label for="">کد بستی فرستنده (اختیاری)</label>
         <input
           type="text"
+          v-model="store.shopOwnerInformation.postalCode"
           placeholder="کد ۱۱ رقمی"
           class="border border-gray-500 rounded-lg py-3 my-4 px-1"
         />
@@ -154,12 +180,20 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useCounterStore } from "@/stores/shoppers";
 import { useToast } from "vue-toastification";
+import { useRouter } from "vue-router";
 import { digitChanger } from "@/composables/digitChanger";
+// This is for route intialization
+
+const router = useRouter();
+
 // This is for toastifications
 const toast = useToast();
+// Setup Store
+const store = useCounterStore();
 // This is to change the state of user
-const currentLevel = ref(1);
+const currentLevel = ref(3);
 const phoneNumberInput = ref("");
 
 const codeOne = ref("");
@@ -171,12 +205,14 @@ const OTPcode = ref(null);
 
 // This whole section belongs to this countdown part
 const minutes = ref(1);
-const seconds = ref(30);
+const seconds = ref(1);
 const countDowner = () => {
   setInterval(() => {
     if (minutes.value >= 0) {
       if (seconds.value > 0) {
         seconds.value--;
+      } else if (seconds.value === 0 && minutes.value === 0) {
+        return;
       } else {
         minutes.value--;
         seconds.value = 59;
@@ -191,7 +227,12 @@ onMounted(() => {
 // This whole part belongs to countDown part
 const randomCodeGenerator = () => {
   let num = Math.floor(Math.random() * 100000);
-  return num;
+  if (num.length <= 4) {
+    num = Math.floor(Math.random() * 100000);
+    return num;
+  } else {
+    return num;
+  }
 };
 const submitPhoneNumber = () => {
   const firstNumber = phoneNumberInput.value.at(0);
@@ -226,6 +267,10 @@ const submitCode = () => {
     toast.error(`کد اشتباه است دوباره تلاش کنید : ${OTPcode.value}`);
   }
 };
+const resendCode = () => {
+  OTPcode.value = randomCodeGenerator();
+  toast.success(`کد مجدد :  ${OTPcode.value} `);
+};
 
 // This will change the focus from last input to the next after user fills it;
 const inputFocusChanger = (e) => {
@@ -240,6 +285,11 @@ const inputFocusChanger = (e) => {
       break;
     }
   }
+};
+
+const submitUserInformation = () => {
+  toast.success(`خوش آمدی :‌${store.shopOwnerInformation.name}`);
+  router.push("/dashboard/main");
 };
 </script>
 
