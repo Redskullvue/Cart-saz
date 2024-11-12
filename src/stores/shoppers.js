@@ -15,14 +15,21 @@ export const useCounterStore = defineStore("shoppers", () => {
 
   const shopCategories = ref(["لباس", "مواد غذایی", "اکسسوری"]);
 
+  const isUserAuthed = ref(false);
+
   // Actions
 
   function setUserCategory(e) {
     shopOwnerInformation.value.shopCategory = e.target.value;
   }
+  function authUser() {
+    isUserAuthed.value = true;
+  }
   return {
     shopOwnerInformation,
     shopCategories,
+    isUserAuthed,
     setUserCategory,
+    authUser,
   };
 });
