@@ -201,7 +201,7 @@ router.beforeEach((to) => {
 router.beforeEach((to, from, next) => {
   const store = useCounterStore();
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (store.isUserAuthed) {
+    if (store.isUserAuthed || localStorage.getItem("isAuthed")) {
     } else {
       router.push("/login");
     }
