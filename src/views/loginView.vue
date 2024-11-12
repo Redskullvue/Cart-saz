@@ -129,7 +129,7 @@
           name="storeActivity"
           class="bg-white border border-gray-500 rounded-lg py-3 my-4 px-1 text-gray-500"
         >
-          <option value="">انتخاب کنید</option>
+          <option :value="null">انتخاب کنید</option>
           <option value="">2</option>
         </select>
         <label for="">ایمیل (اختیاری)</label>
@@ -161,10 +161,13 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useCounterStore } from "@/stores/shoppers";
 import { useToast } from "vue-toastification";
 import { digitChanger } from "@/composables/digitChanger";
 // This is for toastifications
 const toast = useToast();
+// Setup Store
+const store = useCounterStore();
 // This is to change the state of user
 const currentLevel = ref(1);
 const phoneNumberInput = ref("");
@@ -200,7 +203,12 @@ onMounted(() => {
 // This whole part belongs to countDown part
 const randomCodeGenerator = () => {
   let num = Math.floor(Math.random() * 100000);
-  return num;
+  if (num.length <= 4) {
+    num = Math.floor(Math.random() * 100000);
+    return num;
+  } else {
+    return num;
+  }
 };
 const submitPhoneNumber = () => {
   const firstNumber = phoneNumberInput.value.at(0);
