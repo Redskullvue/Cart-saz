@@ -205,7 +205,7 @@ const OTPcode = ref(null);
 
 // This whole section belongs to this countdown part
 const minutes = ref(1);
-const seconds = ref(1);
+const seconds = ref(30);
 const countDowner = () => {
   setInterval(() => {
     if (minutes.value >= 0) {
@@ -220,10 +220,6 @@ const countDowner = () => {
     }
   }, 1000);
 };
-
-onMounted(() => {
-  countDowner();
-});
 // This whole part belongs to countDown part
 const randomCodeGenerator = () => {
   let num = Math.floor(Math.random() * 100000);
@@ -243,6 +239,7 @@ const submitPhoneNumber = () => {
     firstNumber === "9"
   ) {
     currentLevel.value = 2;
+    countDowner();
     toast.success(
       `به دلیل نبود سرویس اس ام اس و سرویس بروکسی از کد ساخته شده استفاده کنید :${OTPcode.value}`
     );
