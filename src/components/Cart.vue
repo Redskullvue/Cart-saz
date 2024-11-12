@@ -5,15 +5,28 @@
   >
     <div class="w-full h-2/3 p-2 flex items-center justify-between">
       <div>
-        <h2 class="font-semibold text-xl">{{ data.title }}</h2>
+        <h2 class="font-semibold text-xl">{{ data.reciverName }}</h2>
         <p class="text-gray-400">ایجاد شده در تاریخ {{ data.date }}</p>
       </div>
       <div>
-        <p>{{ data.price }} تومان</p>
+        <p>{{ digitChanger(JSON.stringify(data.sumProducts)) }} تومان</p>
         <div
           class="max-w-24 rounded-full text-center mt-3 bg-green-400 text-green-800 py-1"
+          v-if="data.status === 'ready'"
         >
           آماده ارسال
+        </div>
+        <div
+          class="max-w-24 rounded-full text-center mt-3 bg-yellow-400 text-yellow-800 py-1"
+          v-if="data.status === 'waiting'"
+        >
+          در انتظار
+        </div>
+        <div
+          class="max-w-24 rounded-full text-center mt-3 bg-red-400 text-red-800 py-1"
+          v-if="data.status === 'canceled'"
+        >
+          لغو شده
         </div>
       </div>
     </div>
@@ -40,6 +53,8 @@
 </template>
 
 <script setup>
+import { digitChanger } from "@/composables/digitChanger";
+
 const props = defineProps({
   data: {
     type: {

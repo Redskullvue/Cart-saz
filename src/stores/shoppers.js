@@ -15,6 +15,7 @@ export const useCounterStore = defineStore("shoppers", () => {
     products: [],
     createdCarts: [
       {
+        id: 1,
         reciverName: "محمد منوچهری",
         reciverNumber: "۰۹۱۰۲۲۳۲۳۷۸",
         reciverAddress: "تهران - افسریه  -   ۱۵ متری اول",
@@ -26,6 +27,7 @@ export const useCounterStore = defineStore("shoppers", () => {
         status: "ready",
       },
       {
+        id: 2,
         reciverName: "محمد هنری",
         reciverNumber: "۰۹۱۰۲۲۳۲۳۷۸",
         reciverAddress: "تهران - خیابان دماوند -  میدان وثوق",
@@ -37,6 +39,7 @@ export const useCounterStore = defineStore("shoppers", () => {
         status: "waiting",
       },
       {
+        id: 3,
         reciverName: "محمد هنری",
         reciverNumber: "۰۹۱۰۲۲۳۲۳۷۸",
         reciverAddress: "تهران - خیابان دماوند -  میدان وثوق",
