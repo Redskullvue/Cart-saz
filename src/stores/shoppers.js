@@ -10,6 +10,7 @@ export const useCounterStore = defineStore("shoppers", () => {
     shopId: "",
     shopName: "",
     shopCategory: "",
+    shopPhone: "۰۹۱۰۲۲۳۲۳۷۸",
     eMail: "",
     postalCode: "",
     products: [],

@@ -9,11 +9,11 @@
         <input
           type="text"
           v-if="isEditingMode"
-          :value="user.name"
+          :value="store.shopOwnerInformation.name"
           class="border border-gray-500 rounded-lg py-2 px-1"
           @input="updateData($event, 'name')"
         />
-        <h2 v-else class="md:text-xl">{{ user.name }}</h2>
+        <h2 v-else class="md:text-xl">{{ store.shopOwnerInformation.name }}</h2>
       </div>
 
       <button
@@ -29,11 +29,13 @@
         <input
           type="tel"
           v-if="isEditingMode"
-          :value="user.tel"
+          :value="store.shopOwnerInformation.shopPhone"
           @input="updateData($event, 'tel')"
           class="border border-gray-500 rounded-lg py-2 px-1"
         />
-        <h2 v-else class="md:text-xl">{{ user.tel }}</h2>
+        <h2 v-else class="md:text-xl">
+          {{ store.shopOwnerInformation.shopPhone }}
+        </h2>
       </div>
       <!-- Email -->
       <div>
@@ -41,11 +43,13 @@
         <input
           type="text"
           v-if="isEditingMode"
-          :value="user.email"
+          :value="store.shopOwnerInformation.eMail"
           @input="updateData($event, 'email')"
           class="border border-gray-500 rounded-lg py-2 px-1"
         />
-        <h2 v-else class="md:text-xl">{{ user.email }}</h2>
+        <h2 v-else class="md:text-xl">
+          {{ store.shopOwnerInformation.eMail }}
+        </h2>
       </div>
     </div>
 
@@ -58,10 +62,12 @@
         <input
           type="text"
           v-if="isEditingMode"
-          :value="user.shopName"
+          :value="store.shopOwnerInformation.shopName"
           class="border border-gray-500 rounded-lg py-2 px-1"
         />
-        <h2 v-else class="md:text-xl">فروشگاه {{ user.shopName }}</h2>
+        <h2 v-else class="md:text-xl">
+          فروشگاه {{ store.shopOwnerInformation.shopName }}
+        </h2>
       </div>
       <!-- shop's instagram -->
       <div>
@@ -71,10 +77,13 @@
         <input
           type="text"
           v-if="isEditingMode"
-          :value="user.instaLink"
+          :value="store.shopOwnerInformation.shopId"
+          @input="updateData($event, 'shopId')"
           class="border border-gray-500 rounded-lg py-2 px-1"
         />
-        <h2 v-else class="md:text-xl">{{ user.instaLink }}</h2>
+        <h2 v-else class="md:text-xl">
+          {{ store.shopOwnerInformation.shopId }}
+        </h2>
       </div>
       <!-- shop's activity -->
       <div>
@@ -82,10 +91,12 @@
         <input
           type="text"
           v-if="isEditingMode"
-          :value="user.activity"
+          :value="store.shopOwnerInformation.shopCategory"
           class="border border-gray-500 rounded-lg py-2 px-1"
         />
-        <h2 v-else class="md:text-xl">{{ user.activity }}</h2>
+        <h2 v-else class="md:text-xl">
+          {{ store.shopOwnerInformation.shopCategory }}
+        </h2>
       </div>
     </div>
 
@@ -110,6 +121,9 @@
 
 <script setup>
 import { ref } from "vue";
+import { useCounterStore } from "@/stores/shoppers";
+
+const store = useCounterStore();
 
 const isEditingMode = ref(false);
 
@@ -124,11 +138,13 @@ const user = ref({
 
 const updateData = (e, section) => {
   if (section === "name") {
-    user.value.name = e.target.value;
+    store.shopOwnerInformation.name = e.target.value;
   } else if (section === "tel") {
-    user.value.tel = e.target.value;
+    store.shopOwnerInformation.shopPhone = e.target.value;
   } else if (section === "email") {
-    user.value.email = e.target.value;
+    store.shopOwnerInformation.eMail = e.target.value;
+  } else if (section === "shopId") {
+    store.shopOwnerInformation.shopId = e.target.value;
   }
 };
 </script>
