@@ -65,6 +65,7 @@ export const useCounterStore = defineStore("shoppers", () => {
   function authUser() {
     isUserAuthed.value = true;
     localStorage.setItem("isAuthed", isUserAuthed.value);
+    localStorage.setItem("userInfo", shopOwnerInformation.value);
   }
   return {
     shopOwnerInformation,
