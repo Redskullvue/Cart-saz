@@ -120,33 +120,35 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useCounterStore } from "@/stores/shoppers";
+import { useToast } from "vue-toastification";
 
 const store = useCounterStore();
-
+const toast = useToast();
 const isEditingMode = ref(false);
-
-const user = ref({
-  name: "احسان عزتی",
-  tel: "۰۹۱۰۲۲۳۲۳۷۸",
-  email: "pooyaworkjs@gmail.com",
-  shopName: "هگزاگون",
-  instaLink: "instagram.com/hexagon",
-  activity: "مد و لباس",
-});
 
 const updateData = (e, section) => {
   if (section === "name") {
     store.shopOwnerInformation.name = e.target.value;
+    store.authUser();
   } else if (section === "tel") {
     store.shopOwnerInformation.shopPhone = e.target.value;
+    store.authUser();
   } else if (section === "email") {
     store.shopOwnerInformation.eMail = e.target.value;
+    store.authUser();
   } else if (section === "shopId") {
     store.shopOwnerInformation.shopId = e.target.value;
+    store.authUser();
   }
 };
+
+watch(isEditingMode, (newVal) => {
+  if (newVal === false) {
+    toast.success("تغییرات ذخیره شد");
+  }
+});
 </script>
 
 <style scoped></style>
