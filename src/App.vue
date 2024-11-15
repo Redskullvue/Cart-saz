@@ -10,6 +10,9 @@ const store = useCounterStore();
 
 onMounted(() => {
   store.isUserAuthed = JSON.parse(localStorage.getItem("isAuthed"));
+  if (localStorage.getItem("userInfo")) {
+    store.shopOwnerInformation = JSON.parse(localStorage.getItem("userInfo"));
+  }
 });
 </script>
 
