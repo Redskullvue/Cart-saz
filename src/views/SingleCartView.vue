@@ -6,27 +6,52 @@
       <div class="w-full flex justify-between items-center my-6">
         <div class="w-1/2">
           <small class="text-gray-500">نام گیرنده</small>
-          <p class="mt-2">احسان عزتی</p>
+          <p class="mt-2">
+            {{
+              store.shopOwnerInformation.createdCarts[route.params.cartid - 1]
+                .reciverName
+            }}
+          </p>
         </div>
         <div class="w-1/2">
           <small class="text-gray-500">شماره گیرنده</small>
-          <p class="mt-2">۰۹۱۰۲۲۳۲۳۷۸</p>
+          <p class="mt-2">
+            {{
+              store.shopOwnerInformation.createdCarts[route.params.cartid - 1]
+                .reciverNumber
+            }}
+          </p>
         </div>
       </div>
       <!-- Row 2 -->
       <div class="w-full my-6">
         <small class="text-gray-500">آدرس گیرنده</small>
-        <p class="mt-2">تهران - میدان امامت - خیابان جدیدی</p>
+        <p class="mt-2">
+          {{
+            store.shopOwnerInformation.createdCarts[route.params.cartid - 1]
+              .reciverAddress
+          }}
+        </p>
       </div>
       <!-- Row 3 -->
       <div class="w-full my-6">
         <small class="text-gray-500">کدبستی</small>
-        <p class="mt-2">۱۲۳۱۲۳۱۲۳۱</p>
+        <p class="mt-2">
+          {{
+            store.shopOwnerInformation.createdCarts[route.params.cartid - 1]
+              .reciverPostalCode
+          }}
+        </p>
       </div>
       <!-- Row 4 -->
       <div class="w-full my-6">
         <small class="text-gray-500">توضیحات</small>
-        <p class="mt-2">--</p>
+        <p class="mt-2">
+          {{
+            store.shopOwnerInformation.createdCarts[route.params.cartid - 1]
+              .reciverNotes
+          }}
+        </p>
       </div>
       <!-- Row-5 -->
       <div class="w-full flex items-center justify-center">
@@ -47,18 +72,47 @@
     <div class="w-full mb-6">
       <h2 class="w-full">محصولات</h2>
       <div class="w-full mt-6">
-        <productCard
-          v-for="(product, index) in products"
+        <template
+          v-for="(product, index) in store.shopOwnerInformation.createdCarts[
+            route.params.cartid - 1
+          ].reciverProducts"
           :key="index"
-          :data="product"
-          class="my-4"
-        />
+        >
+          <productCard
+            v-if="
+              store.shopOwnerInformation.createdCarts[route.params.cartid - 1]
+                .reciverProducts.length > 1
+            "
+            :data="product"
+            :index="index"
+            class="my-4"
+          />
+        </template>
+        <p
+          v-if="
+            store.shopOwnerInformation.createdCarts[route.params.cartid - 1]
+              .reciverProducts.length === 0
+          "
+          class="w-full flex items-center justify-center text-gray-600"
+        >
+          هیچ محصولی برای نمایش وجود ندارد
+        </p>
       </div>
     </div>
     <!-- Full Payed Price For Cart -->
     <div class="w-full flex items-center justify-between mb-6">
       <div class="text-gray-500">مبلغ کل :‌</div>
-      <div>۲.۵۰۰.۰۰۰ تومان</div>
+      <div>
+        {{
+          digitChanger(
+            JSON.stringify(
+              store.shopOwnerInformation.createdCarts[route.params.cartid - 1]
+                .sumProducts
+            )
+          )
+        }}
+        تومان
+      </div>
     </div>
     <!-- Buttons Section -->
     <div class="w-full mb-12 flex items-center justify-between gap-4">
@@ -90,31 +144,14 @@
 
 <script setup>
 import { Icon } from "@iconify/vue";
-
+import { useCounterStore } from "@/stores/shoppers";
 import productCard from "@/components/productCard.vue";
-import { ref } from "vue";
+import { useRoute } from "vue-router";
+import { digitChanger } from "@/composables/digitChanger";
 
-const products = ref([
-  {
-    title: "روغن زیتون",
-    price: "۳۰.۰۰۰",
-    img: "product1.png",
-  },
-  {
-    title: "چایی کیسه ای",
-    price: "۵۰.۰۰۰",
-    img: "product2.png",
-  },
-  {
-    title: "سیب زمینی",
-    price: "۷۰.۰۰۰",
-    img: "product3.png",
-  },
-  {
-    title: "ماست برنجی",
-    price: "۹۰.۰۰۰",
-  },
-]);
+const store = useCounterStore();
+
+const route = useRoute();
 </script>
 
 <style scoped></style>
