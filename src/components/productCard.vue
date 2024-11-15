@@ -8,7 +8,9 @@
       <img v-else src="../assets/images/producterr.png" alt="product-image" />
       <div>
         <h2 class="text-xl font-bold">{{ data.title }}</h2>
-        <p class="text-gray-600 mt-1">قیمت واحد :{{ data.price }} نومان</p>
+        <p class="text-gray-600 mt-1">
+          قیمت واحد :{{ digitChanger(JSON.stringify(data.price)) }} نومان
+        </p>
       </div>
     </div>
     <div>
@@ -27,6 +29,7 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import ToggleButton from "./ToggleButton.vue";
+import { digitChanger } from "@/composables/digitChanger";
 
 const props = defineProps({
   data: {
