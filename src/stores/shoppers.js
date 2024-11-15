@@ -48,7 +48,20 @@ export const useCounterStore = defineStore("shoppers", () => {
         reciverNotes: "",
         sumProducts: 40000,
         date: dateCreator(),
-        reciverProducts: ["1", "2", "3", "4", "5"],
+        reciverProducts: [
+          {
+            id: 3,
+            title: "سیب زمینی",
+            price: 90000,
+            img: "product3.png",
+          },
+          {
+            id: 2,
+            title: "چایی کیسه ای",
+            price: 60000,
+            img: "product2.png",
+          },
+        ],
         status: "ready",
       },
       {
@@ -60,7 +73,7 @@ export const useCounterStore = defineStore("shoppers", () => {
         reciverNotes: "",
         sumProducts: 510000,
         date: dateCreator(),
-        reciverProducts: ["1", "2", "3"],
+        reciverProducts: [],
         status: "waiting",
       },
       {
@@ -72,7 +85,7 @@ export const useCounterStore = defineStore("shoppers", () => {
         reciverNotes: "",
         sumProducts: 70000,
         date: dateCreator(),
-        reciverProducts: ["1", "2", "3"],
+        reciverProducts: [],
         status: "canceled",
       },
     ],
