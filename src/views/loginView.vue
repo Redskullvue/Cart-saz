@@ -238,6 +238,7 @@ const submitPhoneNumber = () => {
     phoneNumberInput.value.length === 10 &&
     firstNumber === "9"
   ) {
+    store.shopOwnerInformation.shopPhone = phoneNumberInput.value;
     currentLevel.value = 2;
     countDowner();
     toast.success(
