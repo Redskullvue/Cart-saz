@@ -13,7 +13,27 @@ export const useCounterStore = defineStore("shoppers", () => {
     shopPhone: "۰۹۱۰۲۲۳۲۳۷۸",
     eMail: "",
     postalCode: "",
-    products: [],
+    products: [
+      {
+        title: "روغن زیتون",
+        price: 30000,
+        img: "product1.png",
+      },
+      {
+        title: "چایی کیسه ای",
+        price: 60000,
+        img: "product2.png",
+      },
+      {
+        title: "سیب زمینی",
+        price: 90000,
+        img: "product3.png",
+      },
+      {
+        title: "ماست برنجی",
+        price: 10000,
+      },
+    ],
     createdCarts: [
       {
         id: 1,

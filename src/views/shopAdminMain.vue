@@ -59,14 +59,19 @@
           />
           آخرین محصولات
         </h2>
-        <div
-          class="border border-gray-400 w-full py-6 px-3 my-4 rounded-lg flex justify-between items-center"
-          v-for="i in 4"
-          :key="i"
+        <template
+          v-for="(product, index) in store.shopOwnerInformation.products"
+          :key="index"
         >
-          <h4 class="text-xl">عسل شانه ای</h4>
-          <p>۲۵۰.۰۰۰ تومان</p>
-        </div>
+          <div
+            v-if="index <= 4"
+            class="border border-gray-400 w-full py-6 px-3 my-4 rounded-lg flex justify-between items-center"
+          >
+            <h4 class="text-xl">{{ product.title }}</h4>
+            <p>{{ digitChanger(JSON.stringify(product.price)) }} تومان</p>
+          </div>
+        </template>
+
         <div class="w-full flex items-center justify-center mt-10">
           <router-link
             to="/dashboard/products"
@@ -92,6 +97,7 @@ import cartCard from "@/components/cartCard.vue";
 import { ref } from "vue";
 import { dateCreator } from "@/composables/dateCreator";
 import { useCounterStore } from "@/stores/shoppers";
+import { digitChanger } from "@/composables/digitChanger";
 
 const store = useCounterStore();
 
