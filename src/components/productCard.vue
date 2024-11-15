@@ -8,7 +8,9 @@
       <img v-else src="../assets/images/producterr.png" alt="product-image" />
       <div>
         <h2 class="text-xl font-bold">{{ data.title }}</h2>
-        <p class="text-gray-600 mt-1">قیمت واحد :{{ data.price }} نومان</p>
+        <p class="text-gray-600 mt-1">
+          قیمت واحد :{{ digitChanger(JSON.stringify(data.price)) }} نومان
+        </p>
       </div>
     </div>
     <div>
@@ -18,6 +20,7 @@
         width="30"
         height="30"
         class="text-gray-500 transition-colors duration-300 hover:text-red-500 cursor-pointer"
+        @click="$emit('deleteItem', index)"
       />
       <ToggleButton v-if="button === 'toggleButton'" />
     </div>
@@ -27,6 +30,7 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import ToggleButton from "./ToggleButton.vue";
+import { digitChanger } from "@/composables/digitChanger";
 
 const props = defineProps({
   data: {
@@ -37,6 +41,10 @@ const props = defineProps({
     type: String,
     required: false,
     default: "delete",
+  },
+  index: {
+    type: Number,
+    required: true,
   },
 });
 

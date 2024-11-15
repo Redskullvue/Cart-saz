@@ -13,7 +13,31 @@ export const useCounterStore = defineStore("shoppers", () => {
     shopPhone: "۰۹۱۰۲۲۳۲۳۷۸",
     eMail: "",
     postalCode: "",
-    products: [],
+    products: [
+      {
+        id: 1,
+        title: "روغن زیتون",
+        price: 30000,
+        img: "product1.png",
+      },
+      {
+        id: 2,
+        title: "چایی کیسه ای",
+        price: 60000,
+        img: "product2.png",
+      },
+      {
+        id: 3,
+        title: "سیب زمینی",
+        price: 90000,
+        img: "product3.png",
+      },
+      {
+        id: 4,
+        title: "ماست برنجی",
+        price: 10000,
+      },
+    ],
     createdCarts: [
       {
         id: 1,
@@ -66,7 +90,18 @@ export const useCounterStore = defineStore("shoppers", () => {
   function authUser() {
     isUserAuthed.value = true;
     localStorage.setItem("isAuthed", isUserAuthed.value);
-    localStorage.setItem("userInfo", shopOwnerInformation.value);
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
+  }
+
+  function deleteProduct(index) {
+    shopOwnerInformation.value.products.splice(index, 1);
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
   }
   return {
     shopOwnerInformation,
@@ -74,5 +109,6 @@ export const useCounterStore = defineStore("shoppers", () => {
     isUserAuthed,
     setUserCategory,
     authUser,
+    deleteProduct,
   };
 });
