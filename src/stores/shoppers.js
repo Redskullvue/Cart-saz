@@ -15,21 +15,25 @@ export const useCounterStore = defineStore("shoppers", () => {
     postalCode: "",
     products: [
       {
+        id: 1,
         title: "روغن زیتون",
         price: 30000,
         img: "product1.png",
       },
       {
+        id: 2,
         title: "چایی کیسه ای",
         price: 60000,
         img: "product2.png",
       },
       {
+        id: 3,
         title: "سیب زمینی",
         price: 90000,
         img: "product3.png",
       },
       {
+        id: 4,
         title: "ماست برنجی",
         price: 10000,
       },
@@ -91,11 +95,20 @@ export const useCounterStore = defineStore("shoppers", () => {
       JSON.stringify(shopOwnerInformation.value)
     );
   }
+
+  function deleteProduct(index) {
+    shopOwnerInformation.value.products.splice(index, 1);
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
+  }
   return {
     shopOwnerInformation,
     shopCategories,
     isUserAuthed,
     setUserCategory,
     authUser,
+    deleteProduct,
   };
 });

@@ -20,6 +20,7 @@
         width="30"
         height="30"
         class="text-gray-500 transition-colors duration-300 hover:text-red-500 cursor-pointer"
+        @click="$emit('deleteItem', index)"
       />
       <ToggleButton v-if="button === 'toggleButton'" />
     </div>
@@ -40,6 +41,10 @@ const props = defineProps({
     type: String,
     required: false,
     default: "delete",
+  },
+  index: {
+    type: Number,
+    required: true,
   },
 });
 
