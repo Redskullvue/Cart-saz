@@ -118,6 +118,10 @@ export const useCounterStore = defineStore("shoppers", () => {
   }
   function addProduct(product) {
     shopOwnerInformation.value.products.unshift(product);
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
   }
   return {
     shopOwnerInformation,

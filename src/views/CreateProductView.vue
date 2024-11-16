@@ -77,12 +77,15 @@
       </div>
       <!-- Upload Pictures -->
       <div class="w-full flex gap-2">
-        <div
+        <img src="" alt="" />
+        <label
+          for="product-image"
           class="w-1/2 md:w-1/3 cursor-pointer h-[200px] rounded-lg border border-blue-600 flex items-center justify-center mb-10 text-blue-800 bg-blue-300"
         >
           <Icon icon="gg:add" width="23" height="23" style="color: darkblue" />
           بارگذاری عکس
-        </div>
+        </label>
+        <input id="product-image" type="file" @change="setProductImage" />
       </div>
       <div class="w-full flex items-center justify-center mb-12">
         <button
@@ -134,6 +137,10 @@ const randomCodeGenerator = () => {
   }
 };
 
+const setProductImage = (e) => {
+  newProduct.value.img = e.target.files[0].name;
+};
+
 const submitNewProduct = (product) => {
   newProduct.value.id = randomCodeGenerator();
   store.addProduct(product);
@@ -141,4 +148,8 @@ const submitNewProduct = (product) => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+input[type="file"] {
+  display: none;
+}
+</style>
