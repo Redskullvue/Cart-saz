@@ -116,6 +116,9 @@ export const useCounterStore = defineStore("shoppers", () => {
       JSON.stringify(shopOwnerInformation.value)
     );
   }
+  function addProduct(product) {
+    shopOwnerInformation.value.products.unshift(product);
+  }
   return {
     shopOwnerInformation,
     shopCategories,
@@ -123,5 +126,6 @@ export const useCounterStore = defineStore("shoppers", () => {
     setUserCategory,
     authUser,
     deleteProduct,
+    addProduct,
   };
 });
