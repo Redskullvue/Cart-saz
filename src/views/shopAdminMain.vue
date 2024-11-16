@@ -64,7 +64,7 @@
           :key="index"
         >
           <div
-            v-if="index <= 4"
+            v-if="index <= 3"
             class="border border-gray-400 w-full py-6 px-3 my-4 rounded-lg flex justify-between items-center"
           >
             <h4 class="text-xl">{{ product.title }}</h4>
