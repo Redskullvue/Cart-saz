@@ -9,12 +9,13 @@
     <div class="w-full text-center border border-gray-200 rounded-lg mt-6">
       <div class="mt-4">
         <a href="#" class="text-blue-500 underline underline-offset-4">
-          https://Cartsaz.ir/vitrins/YourSHop
+          https://Cartsaz.ir/vitrins/{{ store.shopOwnerInformation.shopId }}
         </a>
       </div>
 
       <button
         class="w-full bg-gray-200 flex items-center justify-center py-3 rounded-b-lg mt-4"
+        @click="copyLink"
       >
         <Icon
           icon="solar:copy-linear"
@@ -120,6 +121,13 @@
 
 <script setup>
 import { Icon } from "@iconify/vue";
+import { useCounterStore } from "@/stores/shoppers";
+
+const store = useCounterStore();
+
+const copyLink = () => {
+  console.log("Cop[y logic will be developed later]");
+};
 </script>
 
 <style scoped></style>
