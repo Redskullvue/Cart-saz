@@ -73,6 +73,7 @@ const changeState = () => {
 const submitContact = () => {
   toast.success("اطلاعات با موفقیت ذخیره شد");
   router.push("/vitrin/contacts");
+  store.submitVitrinContactInfo();
 };
 </script>
 

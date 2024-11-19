@@ -68,7 +68,13 @@
             <p>اطلاعات تماس</p>
           </div>
           <div class="flex gap-x-3">
-            <p class="font-light text-green-500">فعال</p>
+            <p
+              v-if="store.shopOwnerInformation.showVitrinContact"
+              class="font-light text-green-500"
+            >
+              فعال
+            </p>
+            <p v-else class="font-light text-red-500">غیر فعال</p>
             <Icon
               icon="mi:chevron-left"
               width="23"
