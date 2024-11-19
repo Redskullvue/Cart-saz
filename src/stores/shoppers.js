@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { defineStore } from "pinia";
 import { dateCreator } from "@/composables/dateCreator";
 
@@ -13,6 +13,11 @@ export const useCounterStore = defineStore("shoppers", () => {
     shopPhone: "۰۹۱۰۲۲۳۲۳۷۸",
     eMail: "",
     postalCode: "",
+    shopWhatsAppVitrin: "",
+    shopAddressVitrin: "",
+    shopPhoneVitrin: "",
+    shopIdVitrin: "",
+    showVitrinContact: false,
     products: [
       {
         id: 1,
@@ -97,6 +102,17 @@ export const useCounterStore = defineStore("shoppers", () => {
 
   // Actions
 
+  watch(
+    shopOwnerInformation.value,
+    () => {
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify(shopOwnerInformation.value)
+      );
+    },
+    { deep: true }
+  );
+
   function setUserCategory(e) {
     shopOwnerInformation.value.shopCategory = e.target.value;
   }
@@ -123,6 +139,17 @@ export const useCounterStore = defineStore("shoppers", () => {
       JSON.stringify(shopOwnerInformation.value)
     );
   }
+  function showVitrin() {
+    shopOwnerInformation.value.showVitrinContact =
+      !shopOwnerInformation.value.showVitrinContact;
+  }
+
+  function submitVitrinContactInfo() {
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
+  }
   return {
     shopOwnerInformation,
     shopCategories,
@@ -131,5 +158,7 @@ export const useCounterStore = defineStore("shoppers", () => {
     authUser,
     deleteProduct,
     addProduct,
+    showVitrin,
+    submitVitrinContactInfo,
   };
 });

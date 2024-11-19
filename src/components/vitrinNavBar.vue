@@ -9,6 +9,7 @@
     >
     <router-link
       to="/vitrin/contacts"
+      v-if="store.shopOwnerInformation.showVitrinContact"
       :class="
         route.path === '/vitrin/contacts' ? 'text-blue-500' : 'text-gray-700'
       "
@@ -19,7 +20,9 @@
 
 <script setup>
 import { useRoute } from "vue-router";
+import { useCounterStore } from "@/stores/shoppers";
 
+const store = useCounterStore();
 const route = useRoute();
 </script>
 

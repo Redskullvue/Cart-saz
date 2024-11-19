@@ -37,7 +37,13 @@
             <p>محصولات ویترین</p>
           </div>
           <div class="flex gap-x-3">
-            <p class="font-light text-green-500">۳</p>
+            <p class="font-light text-green-500">
+              {{
+                digitChanger(
+                  JSON.stringify(store.shopOwnerInformation.products.length)
+                )
+              }}
+            </p>
             <Icon
               icon="mi:chevron-left"
               width="23"
@@ -62,7 +68,13 @@
             <p>اطلاعات تماس</p>
           </div>
           <div class="flex gap-x-3">
-            <p class="font-light text-green-500">فعال</p>
+            <p
+              v-if="store.shopOwnerInformation.showVitrinContact"
+              class="font-light text-green-500"
+            >
+              فعال
+            </p>
+            <p v-else class="font-light text-red-500">غیر فعال</p>
             <Icon
               icon="mi:chevron-left"
               width="23"
@@ -122,11 +134,17 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import { useCounterStore } from "@/stores/shoppers";
+import { useToast } from "vue-toastification";
+import { digitChanger } from "@/composables/digitChanger";
 
 const store = useCounterStore();
+const toast = useToast();
 
 const copyLink = () => {
-  console.log("Cop[y logic will be developed later]");
+  navigator.clipboard.writeText(
+    `https://Cartsaz.ir/vitrins/${store.shopOwnerInformation.shopId}`
+  );
+  toast.success("لینک کپی شد");
 };
 </script>
 
