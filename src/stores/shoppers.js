@@ -13,6 +13,11 @@ export const useCounterStore = defineStore("shoppers", () => {
     shopPhone: "۰۹۱۰۲۲۳۲۳۷۸",
     eMail: "",
     postalCode: "",
+    shopWhatsAppVitrin: "",
+    shopAddressVitrin: "",
+    shopPhoneVitrin: "",
+    shopIdVitrin: "",
+    showVitrinContact: false,
     products: [
       {
         id: 1,
@@ -123,6 +128,10 @@ export const useCounterStore = defineStore("shoppers", () => {
       JSON.stringify(shopOwnerInformation.value)
     );
   }
+  function showVitrin() {
+    shopOwnerInformation.value.showVitrinContact =
+      !shopOwnerInformation.value.showVitrinContact;
+  }
   return {
     shopOwnerInformation,
     shopCategories,
@@ -131,5 +140,6 @@ export const useCounterStore = defineStore("shoppers", () => {
     authUser,
     deleteProduct,
     addProduct,
+    showVitrin,
   };
 });
