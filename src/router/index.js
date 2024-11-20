@@ -168,12 +168,12 @@ const router = createRouter({
       component: VitrinLayout,
       children: [
         {
-          path: "/vitrin",
+          path: "/vitrin/:userId",
           name: "userVitrinView",
           component: UserVitrinView,
         },
         {
-          path: "/vitrin/contacts",
+          path: "/vitrin/:userId/contacts",
           name: "userVitrinContact",
           component: UserVitrinContact,
         },
