@@ -1,7 +1,9 @@
 <template>
   <div class="w-full md:flex items-center justify-center flex-col">
     <div class="w-full border-b border-gray-300 px-4 py-7">
-      <router-link to="/vitrin">بازگشت به ویترین</router-link>
+      <router-link :to="'/vitrin/' + store.shopOwnerInformation.shopId"
+        >بازگشت به ویترین</router-link
+      >
     </div>
 
     <div class="mt-4 w-full p-6 md:w-[70%]">
@@ -58,6 +60,10 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useCounterStore } from "@/stores/shoppers";
+
+const store = useCounterStore();
+</script>
 
 <style scoped></style>

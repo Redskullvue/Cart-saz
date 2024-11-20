@@ -8,9 +8,12 @@
     </h2>
     <div class="w-full text-center border border-gray-200 rounded-lg mt-6">
       <div class="mt-4">
-        <a href="#" class="text-blue-500 underline underline-offset-4">
+        <router-link
+          class="text-blue-500 underline underline-offset-4"
+          :to="'/vitrin/' + store.shopOwnerInformation.shopId"
+        >
           https://Cartsaz.ir/vitrins/{{ store.shopOwnerInformation.shopId }}
-        </a>
+        </router-link>
       </div>
 
       <button
