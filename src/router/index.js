@@ -78,6 +78,7 @@ const router = createRouter({
           component: ShopAdminProducts,
           meta: {
             title: "محصولات",
+            requiresAuth: true,
           },
         },
         {
@@ -86,6 +87,7 @@ const router = createRouter({
           component: shopAdminCarts,
           meta: {
             title: "سبدهای خرید",
+            requiresAuth: true,
           },
         },
         {
@@ -94,6 +96,7 @@ const router = createRouter({
           component: shopAdminProfile,
           meta: {
             title: "حساب کاربری",
+            requiresAuth: true,
           },
         },
         {
@@ -102,6 +105,7 @@ const router = createRouter({
           component: CreateProductView,
           meta: {
             title: "افزودن محصول جدید",
+            requiresAuth: true,
           },
         },
         {
@@ -110,6 +114,7 @@ const router = createRouter({
           component: SingleCartView,
           meta: {
             title: "سبد خرید",
+            requiresAuth: true,
           },
         },
         {
@@ -118,6 +123,7 @@ const router = createRouter({
           component: CreateNewCartView,
           meta: {
             title: "ساخت سبد خرید",
+            requiresAuth: true,
           },
         },
         {
@@ -126,6 +132,7 @@ const router = createRouter({
           component: VitrinView,
           meta: {
             title: "ویترین شما",
+            requiresAuth: true,
           },
         },
         {
@@ -134,6 +141,7 @@ const router = createRouter({
           component: VitrinProductsView,
           meta: {
             title: "محصولات ویترین",
+            requiresAuth: true,
           },
         },
         {
@@ -142,6 +150,7 @@ const router = createRouter({
           component: VitrinContactView,
           meta: {
             title: "اطلاعات تماس",
+            requiresAuth: true,
           },
         },
         {
@@ -150,6 +159,7 @@ const router = createRouter({
           component: VitrinSettingView,
           meta: {
             title: "تنظیمات کلی ویترین",
+            requiresAuth: true,
           },
         },
         {
@@ -158,6 +168,7 @@ const router = createRouter({
           component: VitrinQrCodeView,
           meta: {
             title: "Qr Code",
+            requiresAuth: true,
           },
         },
       ],
