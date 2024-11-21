@@ -152,6 +152,7 @@ const deleteProduct = (index) => {
   toast.error("محصول حذف شد");
 };
 const createCart = () => {
+  store.createCartFromAdminPanel(selectedProducts.value);
   isCartCreated.value = true;
 };
 
