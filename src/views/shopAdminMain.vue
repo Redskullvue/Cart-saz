@@ -26,7 +26,11 @@
           :key="index"
         >
           <div class="mt-4">
-            <cart-card v-if="index <= 2" :index="index + 1" :info="cart" />
+            <cart-card
+              v-if="index >= store.shopOwnerInformation.createdCarts.length - 3"
+              :index="index + 1"
+              :info="cart"
+            />
           </div>
         </template>
         <p
