@@ -1,10 +1,11 @@
 <template>
   <div class="w-full">
     <div class="w-full flex items-center justify-center">
-      <img :src="qrCodeUrl" alt="qr-code" />
+      <img :src="qrCodeUrl" alt="qr-code" id="qr-code" />
     </div>
     <button
       class="bg-gray-200 rounded-lg py-3 px-1 w-full mt-6 flex items-center justify-center gap-2"
+      @click="printQrCode"
     >
       <Icon
         icon="material-symbols-light:print-outline"
@@ -60,6 +61,14 @@ QRCode.toDataURL(
     qrCodeUrl = url;
   }
 );
+
+const printQrCode = () => {
+  let newWindow = window.open();
+  newWindow.document.write(
+    '<img src="' + qrCodeUrl + '" onload="window.print();window.close()" />'
+  );
+  newWindow.focus();
+};
 </script>
 
 <style scoped></style>
