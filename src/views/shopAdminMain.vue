@@ -21,15 +21,22 @@
           />
           آخرین سبدهای خرید
         </h2>
-        <div class="mt-4" v-if="carts.length > 0">
-          <cart-card
-            v-for="(cart, index) in store.shopOwnerInformation.createdCarts"
-            :key="index"
-            :index="index + 1"
-            :info="cart"
-          />
-        </div>
-        <p v-else class="w-full text-center mt-10">
+        <template
+          v-for="(cart, index) in store.shopOwnerInformation.createdCarts"
+          :key="index"
+        >
+          <div class="mt-4">
+            <cart-card
+              v-if="index >= store.shopOwnerInformation.createdCarts.length - 3"
+              :index="index + 1"
+              :info="cart"
+            />
+          </div>
+        </template>
+        <p
+          class="w-full text-center mt-10"
+          v-if="store.shopOwnerInformation.createdCarts.length < 1"
+        >
           هیچ آیتمی برای نمایش وجود ندارد
         </p>
         <div class="w-full flex items-center justify-center mt-10">

@@ -160,6 +160,25 @@ export const useCounterStore = defineStore("shoppers", () => {
       JSON.stringify(shopOwnerInformation.value)
     );
   }
+
+  function createCartFromAdminPanel(selectedProducts) {
+    shopOwnerInformation.value.createdCarts.push({
+      id: shopOwnerInformation.value.createdCarts.length + 1,
+      reciverName:
+        "کاربر بی نام" + (shopOwnerInformation.value.createdCarts.length + 1),
+      reciverAddress: "",
+      reciverNotes: "",
+      reciverPostalCode: "",
+      reciverProducts: selectedProducts,
+      sumProducts: 50000,
+      date: dateCreator(),
+      status: "waiting",
+    });
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
+  }
   return {
     shopOwnerInformation,
     shopCategories,
@@ -171,5 +190,6 @@ export const useCounterStore = defineStore("shoppers", () => {
     showVitrin,
     submitVitrinContactInfo,
     setUserLogo,
+    createCartFromAdminPanel,
   };
 });
