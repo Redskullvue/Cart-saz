@@ -16,8 +16,10 @@ export const useCounterStore = defineStore("shoppers", () => {
     shopWhatsAppVitrin: "",
     shopAddressVitrin: "",
     shopPhoneVitrin: "",
+    shopDescription: "",
     shopIdVitrin: "",
     showVitrinContact: false,
+    vitrinLogo: "logo2.png",
     products: [
       {
         id: 1,
@@ -150,6 +152,14 @@ export const useCounterStore = defineStore("shoppers", () => {
       JSON.stringify(shopOwnerInformation.value)
     );
   }
+
+  function setUserLogo(image) {
+    shopOwnerInformation.value.vitrinLogo = image;
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
+  }
   return {
     shopOwnerInformation,
     shopCategories,
@@ -160,5 +170,6 @@ export const useCounterStore = defineStore("shoppers", () => {
     addProduct,
     showVitrin,
     submitVitrinContactInfo,
+    setUserLogo,
   };
 });
