@@ -164,7 +164,8 @@ export const useCounterStore = defineStore("shoppers", () => {
   function createCartFromAdminPanel(selectedProducts) {
     shopOwnerInformation.value.createdCarts.push({
       id: shopOwnerInformation.value.createdCarts.length + 1,
-      reciverName: "کاربر بی نام",
+      reciverName:
+        "کاربر بی نام" + (shopOwnerInformation.value.createdCarts.length + 1),
       reciverAddress: "",
       reciverNotes: "",
       reciverPostalCode: "",
@@ -173,6 +174,10 @@ export const useCounterStore = defineStore("shoppers", () => {
       date: dateCreator(),
       status: "waiting",
     });
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
   }
   return {
     shopOwnerInformation,
