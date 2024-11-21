@@ -64,11 +64,17 @@
     <div class="w-full flex flex-col items-center justify-center">
       <img src="../assets/images/created.svg" alt="created" />
       <h2 class="w-full text-center mt-6 text-xl">
-        سبدخرید ۲ با موفقیت ساخته شد
+        سبدخرید {{ store.shopOwnerInformation.createdCarts.length }} با موفقیت
+        ساخته شد
       </h2>
-      <a href="#" class="text-blue-500 underline underline-offset-4 mt-4">
-        https://cartsaz.ir/c232131
-      </a>
+      <router-link
+        :to="
+          '/dashboard/cart/' + store.shopOwnerInformation.createdCarts.length
+        "
+        class="text-blue-500 underline underline-offset-4 mt-4"
+      >
+        https://cartsaz.ir/{{ store.shopOwnerInformation.createdCarts.length }}
+      </router-link>
       <div class="w-full border-b border-gray-300 py-4">
         <button
           class="w-full rounded-lg bg-gray-100 py-3 mt-4 flex gap-2 items-center justify-center"
