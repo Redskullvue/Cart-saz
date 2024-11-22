@@ -82,7 +82,14 @@ export const useCounterStore = defineStore("shoppers", () => {
         reciverNotes: "",
         sumProducts: 0,
         date: dateCreator(),
-        reciverProducts: [],
+        reciverProducts: [
+          {
+            id: 3,
+            title: "سیب زمینی",
+            price: 90000,
+            img: "product3.png",
+          },
+        ],
         status: "waiting",
       },
       {
@@ -95,7 +102,14 @@ export const useCounterStore = defineStore("shoppers", () => {
         reciverNotes: "",
         sumProducts: 0,
         date: dateCreator(),
-        reciverProducts: [],
+        reciverProducts: [
+          {
+            id: 3,
+            title: "سیب زمینی",
+            price: 90000,
+            img: "product3.png",
+          },
+        ],
         status: "canceled",
       },
     ],
@@ -198,6 +212,14 @@ export const useCounterStore = defineStore("shoppers", () => {
     );
   }
 
+  function changeCartStatus(status, index) {
+    shopOwnerInformation.value.createdCarts[index - 1].status = status;
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
+  }
+
   return {
     shopOwnerInformation,
     shopCategories,
@@ -211,5 +233,6 @@ export const useCounterStore = defineStore("shoppers", () => {
     setUserLogo,
     createCartFromAdminPanel,
     sumOfProducts,
+    changeCartStatus,
   };
 });
