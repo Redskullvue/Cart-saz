@@ -33,27 +33,30 @@
     <div
       class="w-full h-1/3 bg-gray-200 p-2 border-t border-gray-300 flex items-center gap-4 justify-end"
     >
-      <img
-        src="../assets/images/product1.png"
-        alt="product"
-        class="w-[33px] h-[33px]"
-      />
-      <img
-        src="../assets/images/product2.png"
-        alt="prodcut"
-        class="w-[33px] h-[33px]"
-      />
-      <img
-        src="../assets/images/product3.png"
-        alt="product"
-        class="w-[33px] h-[33px]"
-      />
+      <template v-for="(item, index) in data.reciverProducts" :key="index">
+        <img
+          :src="imgUrl + '/' + item.img"
+          v-if="item.img"
+          alt="product"
+          class="w-[33px] h-[33px]"
+        />
+        <img
+          v-if="!item.img"
+          src="../assets/images/producterr.png"
+          alt="non-image-product"
+          class="w-[33px] h-[33px]"
+        />
+      </template>
     </div>
   </router-link>
 </template>
 
 <script setup>
 import { digitChanger } from "@/composables/digitChanger";
+import { useCounterStore } from "@/stores/shoppers";
+import { onMounted } from "vue";
+
+const store = useCounterStore();
 
 const props = defineProps({
   data: {
@@ -66,6 +69,11 @@ const props = defineProps({
     required: true,
   },
 });
+
+onMounted(() => {
+  store.sumOfProducts(props.data.id);
+});
+const imgUrl = new URL("../assets/images/", import.meta.url).href;
 </script>
 
 <style scoped></style>

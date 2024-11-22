@@ -117,6 +117,7 @@
     <!-- Buttons Section -->
     <div class="w-full mb-12 flex items-center justify-between gap-4">
       <button
+        @click="doneCartStatus('canceled', route.params.cartid)"
         class="text-red-600 flex items-center justify-center gap-2 bg-red-100 rounded-lg py-3 w-1/2 transition-colors duration-300 hover:bg-red-200"
       >
         <Icon
@@ -128,6 +129,7 @@
         لغو کامل
       </button>
       <button
+        @click="doneCartStatus('ready', route.params.cartid)"
         class="text-white bg-blue-500 rounded-lg py-3 w-1/2 flex gap-2 items-center justify-center transition-colors duration-300 hover:bg-blue-600"
       >
         <Icon
@@ -143,15 +145,31 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
 import { Icon } from "@iconify/vue";
 import { useCounterStore } from "@/stores/shoppers";
 import productCard from "@/components/productCard.vue";
 import { useRoute } from "vue-router";
 import { digitChanger } from "@/composables/digitChanger";
+import { useToast } from "vue-toastification";
 
+const toast = useToast();
 const store = useCounterStore();
 
 const route = useRoute();
+
+onMounted(() => {
+  store.sumOfProducts(route.params.cartid);
+});
+
+const doneCartStatus = (status, index) => {
+  if (status === "ready") {
+    toast.success("سبد خرید آماده ارسال شد");
+  } else if (status === "canceled") {
+    toast.error("سبد خرید لغو شد");
+  }
+  store.changeCartStatus(status, index);
+};
 </script>
 
 <style scoped></style>

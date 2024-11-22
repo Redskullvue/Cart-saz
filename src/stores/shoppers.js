@@ -48,12 +48,13 @@ export const useCounterStore = defineStore("shoppers", () => {
     createdCarts: [
       {
         id: 1,
+        cartLink: "/user/1",
         reciverName: "محمد منوچهری",
         reciverNumber: "۰۹۱۰۲۲۳۲۳۷۸",
         reciverAddress: "تهران - افسریه  -   ۱۵ متری اول",
         reciverPostalCode: "12345678912",
         reciverNotes: "",
-        sumProducts: 40000,
+        sumProducts: 0,
         date: dateCreator(),
         reciverProducts: [
           {
@@ -73,26 +74,42 @@ export const useCounterStore = defineStore("shoppers", () => {
       },
       {
         id: 2,
+        cartLink: "/user/2",
         reciverName: "محمد هنری",
         reciverNumber: "۰۹۱۰۲۲۳۲۳۷۸",
         reciverAddress: "تهران - خیابان دماوند -  میدان وثوق",
         reciverPostalCode: "12345678912",
         reciverNotes: "",
-        sumProducts: 510000,
+        sumProducts: 0,
         date: dateCreator(),
-        reciverProducts: [],
+        reciverProducts: [
+          {
+            id: 3,
+            title: "سیب زمینی",
+            price: 90000,
+            img: "product3.png",
+          },
+        ],
         status: "waiting",
       },
       {
         id: 3,
+        cartLink: "/user/3",
         reciverName: "محمد هنری",
         reciverNumber: "۰۹۱۰۲۲۳۲۳۷۸",
         reciverAddress: "تهران - خیابان دماوند -  میدان وثوق",
         reciverPostalCode: "12345678912",
         reciverNotes: "",
-        sumProducts: 70000,
+        sumProducts: 0,
         date: dateCreator(),
-        reciverProducts: [],
+        reciverProducts: [
+          {
+            id: 3,
+            title: "سیب زمینی",
+            price: 90000,
+            img: "product3.png",
+          },
+        ],
         status: "canceled",
       },
     ],
@@ -170,7 +187,7 @@ export const useCounterStore = defineStore("shoppers", () => {
       reciverNotes: "",
       reciverPostalCode: "",
       reciverProducts: selectedProducts,
-      sumProducts: 50000,
+      sumProducts: 0,
       date: dateCreator(),
       status: "waiting",
     });
@@ -179,6 +196,30 @@ export const useCounterStore = defineStore("shoppers", () => {
       JSON.stringify(shopOwnerInformation.value)
     );
   }
+  function sumOfProducts(index) {
+    shopOwnerInformation.value.createdCarts[index - 1].sumProducts = 0;
+
+    shopOwnerInformation.value.createdCarts[index - 1].reciverProducts.forEach(
+      (item) => {
+        shopOwnerInformation.value.createdCarts[index - 1].sumProducts =
+          item.price +
+          shopOwnerInformation.value.createdCarts[index - 1].sumProducts;
+      }
+    );
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
+  }
+
+  function changeCartStatus(status, index) {
+    shopOwnerInformation.value.createdCarts[index - 1].status = status;
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
+  }
+
   return {
     shopOwnerInformation,
     shopCategories,
@@ -191,5 +232,7 @@ export const useCounterStore = defineStore("shoppers", () => {
     submitVitrinContactInfo,
     setUserLogo,
     createCartFromAdminPanel,
+    sumOfProducts,
+    changeCartStatus,
   };
 });
