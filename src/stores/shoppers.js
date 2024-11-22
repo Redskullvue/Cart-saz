@@ -48,6 +48,7 @@ export const useCounterStore = defineStore("shoppers", () => {
     createdCarts: [
       {
         id: 1,
+        cartLink: `/user/${id}`,
         reciverName: "محمد منوچهری",
         reciverNumber: "۰۹۱۰۲۲۳۲۳۷۸",
         reciverAddress: "تهران - افسریه  -   ۱۵ متری اول",
@@ -73,6 +74,7 @@ export const useCounterStore = defineStore("shoppers", () => {
       },
       {
         id: 2,
+        cartLink: `/user/${id}`,
         reciverName: "محمد هنری",
         reciverNumber: "۰۹۱۰۲۲۳۲۳۷۸",
         reciverAddress: "تهران - خیابان دماوند -  میدان وثوق",
@@ -85,6 +87,7 @@ export const useCounterStore = defineStore("shoppers", () => {
       },
       {
         id: 3,
+        cartLink: `/user/${id}`,
         reciverName: "محمد هنری",
         reciverNumber: "۰۹۱۰۲۲۳۲۳۷۸",
         reciverAddress: "تهران - خیابان دماوند -  میدان وثوق",
