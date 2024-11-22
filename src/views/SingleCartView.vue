@@ -143,6 +143,7 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
 import { Icon } from "@iconify/vue";
 import { useCounterStore } from "@/stores/shoppers";
 import productCard from "@/components/productCard.vue";
@@ -152,6 +153,10 @@ import { digitChanger } from "@/composables/digitChanger";
 const store = useCounterStore();
 
 const route = useRoute();
+
+onMounted(() => {
+  store.sumOfProducts(route.params.cartid);
+});
 </script>
 
 <style scoped></style>

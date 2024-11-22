@@ -53,6 +53,10 @@
 
 <script setup>
 import { digitChanger } from "@/composables/digitChanger";
+import { useCounterStore } from "@/stores/shoppers";
+import { onMounted } from "vue";
+
+const store = useCounterStore();
 
 const props = defineProps({
   data: {
@@ -64,6 +68,10 @@ const props = defineProps({
     },
     required: true,
   },
+});
+
+onMounted(() => {
+  store.sumOfProducts(props.data.id);
 });
 const imgUrl = new URL("../assets/images/", import.meta.url).href;
 </script>

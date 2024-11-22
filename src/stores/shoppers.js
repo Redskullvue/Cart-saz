@@ -54,7 +54,7 @@ export const useCounterStore = defineStore("shoppers", () => {
         reciverAddress: "تهران - افسریه  -   ۱۵ متری اول",
         reciverPostalCode: "12345678912",
         reciverNotes: "",
-        sumProducts: 40000,
+        sumProducts: 0,
         date: dateCreator(),
         reciverProducts: [
           {
@@ -80,7 +80,7 @@ export const useCounterStore = defineStore("shoppers", () => {
         reciverAddress: "تهران - خیابان دماوند -  میدان وثوق",
         reciverPostalCode: "12345678912",
         reciverNotes: "",
-        sumProducts: 510000,
+        sumProducts: 0,
         date: dateCreator(),
         reciverProducts: [],
         status: "waiting",
@@ -93,7 +93,7 @@ export const useCounterStore = defineStore("shoppers", () => {
         reciverAddress: "تهران - خیابان دماوند -  میدان وثوق",
         reciverPostalCode: "12345678912",
         reciverNotes: "",
-        sumProducts: 70000,
+        sumProducts: 0,
         date: dateCreator(),
         reciverProducts: [],
         status: "canceled",
@@ -173,7 +173,7 @@ export const useCounterStore = defineStore("shoppers", () => {
       reciverNotes: "",
       reciverPostalCode: "",
       reciverProducts: selectedProducts,
-      sumProducts: 50000,
+      sumProducts: 0,
       date: dateCreator(),
       status: "waiting",
     });
@@ -182,6 +182,22 @@ export const useCounterStore = defineStore("shoppers", () => {
       JSON.stringify(shopOwnerInformation.value)
     );
   }
+  function sumOfProducts(index) {
+    shopOwnerInformation.value.createdCarts[index - 1].sumProducts = 0;
+
+    shopOwnerInformation.value.createdCarts[index - 1].reciverProducts.forEach(
+      (item) => {
+        shopOwnerInformation.value.createdCarts[index - 1].sumProducts =
+          item.price +
+          shopOwnerInformation.value.createdCarts[index - 1].sumProducts;
+      }
+    );
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
+  }
+
   return {
     shopOwnerInformation,
     shopCategories,
@@ -194,5 +210,6 @@ export const useCounterStore = defineStore("shoppers", () => {
     submitVitrinContactInfo,
     setUserLogo,
     createCartFromAdminPanel,
+    sumOfProducts,
   };
 });
