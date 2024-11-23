@@ -226,18 +226,31 @@ export const useCounterStore = defineStore("shoppers", () => {
 
   function showProductInVitrin(state, index) {
     shopOwnerInformation.value.products[index].isShownVitrin = state;
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
   }
 
   function showAllProductsInVitrin(state) {
     shopOwnerInformation.value.products.forEach((item) => {
       item.isShownVitrin = state;
     });
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
   }
   function showProductInVitrinById(id, state) {
     let item = shopOwnerInformation.value.products.find(
       (item) => item.id === id
     );
     item.isShownVitrin = state;
+
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(shopOwnerInformation.value)
+    );
   }
   return {
     shopOwnerInformation,
