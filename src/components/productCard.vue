@@ -22,7 +22,11 @@
         class="text-gray-500 transition-colors duration-300 hover:text-red-500 cursor-pointer"
         @click="$emit('deleteItem', index)"
       />
-      <ToggleButton v-if="button === 'toggleButton'" />
+      <ToggleButton
+        v-if="button === 'toggleButton'"
+        :state="data.isShownVitrin"
+        @changeButtonState="showInVitrin"
+      />
     </div>
   </div>
 </template>
@@ -31,6 +35,9 @@
 import { Icon } from "@iconify/vue";
 import ToggleButton from "./ToggleButton.vue";
 import { digitChanger } from "@/composables/digitChanger";
+import { useCounterStore } from "@/stores/shoppers";
+
+const store = useCounterStore();
 
 const props = defineProps({
   data: {
@@ -47,6 +54,10 @@ const props = defineProps({
     required: true,
   },
 });
+
+const showInVitrin = (e) => {
+  store.showProductInVitrin(e, props.index);
+};
 
 const imgUrl = new URL(`../assets/images/${props.data.img}`, import.meta.url)
   .href;

@@ -30,6 +30,7 @@
               v-if="index >= store.shopOwnerInformation.createdCarts.length - 3"
               :index="index + 1"
               :info="cart"
+              :id="store.shopOwnerInformation.createdCarts[index].id"
             />
           </div>
         </template>

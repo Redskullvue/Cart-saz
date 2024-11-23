@@ -26,23 +26,27 @@ export const useCounterStore = defineStore("shoppers", () => {
         title: "روغن زیتون",
         price: 30000,
         img: "product1.png",
+        isShownVitrin: false,
       },
       {
         id: 2,
         title: "چایی کیسه ای",
         price: 60000,
         img: "product2.png",
+        isShownVitrin: false,
       },
       {
         id: 3,
         title: "سیب زمینی",
         price: 90000,
         img: "product3.png",
+        isShownVitrin: true,
       },
       {
         id: 4,
         title: "ماست برنجی",
         price: 10000,
+        isShownVitrin: false,
       },
     ],
     createdCarts: [
@@ -220,6 +224,15 @@ export const useCounterStore = defineStore("shoppers", () => {
     );
   }
 
+  function showProductInVitrin(state, index) {
+    shopOwnerInformation.value.products[index].isShownVitrin = state;
+  }
+
+  function showAllProductsInVitrin(state) {
+    shopOwnerInformation.value.products.forEach((item) => {
+      item.isShownVitrin = state;
+    });
+  }
   return {
     shopOwnerInformation,
     shopCategories,
@@ -234,5 +247,7 @@ export const useCounterStore = defineStore("shoppers", () => {
     createCartFromAdminPanel,
     sumOfProducts,
     changeCartStatus,
+    showProductInVitrin,
+    showAllProductsInVitrin,
   };
 });
