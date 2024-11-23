@@ -233,6 +233,12 @@ export const useCounterStore = defineStore("shoppers", () => {
       item.isShownVitrin = state;
     });
   }
+  function showProductInVitrinById(id, state) {
+    let item = shopOwnerInformation.value.products.find(
+      (item) => item.id === id
+    );
+    item.isShownVitrin = state;
+  }
   return {
     shopOwnerInformation,
     shopCategories,
@@ -249,5 +255,6 @@ export const useCounterStore = defineStore("shoppers", () => {
     changeCartStatus,
     showProductInVitrin,
     showAllProductsInVitrin,
+    showProductInVitrinById,
   };
 });

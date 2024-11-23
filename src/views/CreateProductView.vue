@@ -37,12 +37,6 @@
       </div>
       <div class="flex flex-col">
         <div for="">دسته بندی</div>
-        <!-- <input
-          type="text"
-          placeholder="اکسسوری"
-          v-model="newProduct.category"
-          class="border border-gray-400 rounded-lg py-3 my-4 px-1"
-        /> -->
         <select
           class="border border-gray-400 rounded-lg py-3 my-4 px-1 bg-white"
           @change="setProductCategory"
@@ -115,7 +109,7 @@ const newProduct = ref({
   productCode: "",
   category: null,
   productInfo: "",
-  showVitrin: true,
+  isShownVitrin: true,
   img: "",
 });
 
