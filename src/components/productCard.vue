@@ -51,12 +51,15 @@ const props = defineProps({
   },
   index: {
     type: Number,
-    required: true,
   },
 });
 
 const showInVitrin = (e) => {
-  store.showProductInVitrin(e, props.index);
+  if (props.index) {
+    store.showProductInVitrin(e, props.index);
+  } else {
+    store.showProductInVitrinById(props.data.id, e);
+  }
 };
 
 const imgUrl = new URL(`../assets/images/${props.data.img}`, import.meta.url)
