@@ -7,7 +7,9 @@
         <img :src="imgUrl" alt="vitrin-logo" />
       </div>
       <div>
-        <h2 class="text-xl mb-3">فروشگاه کارتساز</h2>
+        <h2 class="text-xl mb-3">
+          فروشگاه {{ store.shopOwnerInformation.shopName }}
+        </h2>
         <p
           class="text-gray-300 text-sm"
           v-if="store.shopOwnerInformation.shopDescription"
