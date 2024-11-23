@@ -46,7 +46,15 @@
 
 <script setup>
 import { digitChanger } from "@/composables/digitChanger";
-const props = defineProps(["label", "info", "index"]);
+import { onMounted } from "vue";
+import { useCounterStore } from "@/stores/shoppers";
+const props = defineProps(["label", "info", "index", "id"]);
+
+const store = useCounterStore();
+
+onMounted(() => {
+  store.sumOfProducts(props.id);
+});
 </script>
 
 <style scoped></style>
