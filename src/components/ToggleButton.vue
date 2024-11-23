@@ -14,10 +14,16 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
+
 const props = defineProps({
   state: {
     type: Boolean,
     // required: true,
   },
+});
+
+onMounted(() => {
+  console.log(props.state);
 });
 </script>
